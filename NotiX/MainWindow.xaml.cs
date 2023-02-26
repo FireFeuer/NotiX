@@ -23,6 +23,7 @@ namespace NotiX
         public MainWindow()
         {
             InitializeComponent();
+           // ukyukyukyuk
         }
     }
 }
