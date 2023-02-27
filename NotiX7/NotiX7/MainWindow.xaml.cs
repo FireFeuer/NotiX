@@ -17,7 +17,7 @@ namespace NotiX7
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
-    /// ggsgsesegs
+    /// Илья
     /// </summary>
     public partial class MainWindow : Window
     {
