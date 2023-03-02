@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\МОиБД\\Documents\\Базарбаев\\ОАО\\NotiX7\\NotiX7\\NotiX7.csproj": {}
+    "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {}
   },
   "projects": {
-    "C:\\Users\\МОиБД\\Documents\\Базарбаев\\ОАО\\NotiX7\\NotiX7\\NotiX7.csproj": {
+    "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\МОиБД\\Documents\\Базарбаев\\ОАО\\NotiX7\\NotiX7\\NotiX7.csproj",
+        "projectUniqueName": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
         "projectName": "NotiX7",
-        "projectPath": "C:\\Users\\МОиБД\\Documents\\Базарбаев\\ОАО\\NotiX7\\NotiX7\\NotiX7.csproj",
+        "projectPath": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
         "packagesPath": "C:\\Users\\МОиБД\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\МОиБД\\Documents\\Базарбаев\\ОАО\\NotiX7\\NotiX7\\obj\\",
+        "outputPath": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\МОиБД\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,18 @@
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.0-preview.1.23111.4, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0-preview.1.23111.4, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -58,7 +70,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

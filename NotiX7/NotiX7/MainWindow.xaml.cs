@@ -30,12 +30,32 @@ namespace NotiX7
         public MainWindow()
         {
             InitializeComponent();
+            using(NotixBdContext db = new NotixBdContext())
+            {
+                var notes = db.Notes.ToList();
+                foreach(Note n in notes) // Берём и загружаем все заметки с БД на доску
+                {
+                    Border note = new Border
+                    {
+                        Width = size_note,
+                        Height = size_note,
+                        Background = new SolidColorBrush(Color.FromRgb(59, 89, 152)), // Цвет заметки
+                        BorderBrush = new SolidColorBrush(Colors.Black),
+                        BorderThickness = new Thickness(1),
+                        Padding = new Thickness(10),
+                    };
+                    Board.Children.Add(note);
+                    Canvas.SetLeft(note, n.X);
+                    Canvas.SetTop(note, n.Y);
+                    
+                }
+            }
+           
         }
 
         private void Note_placement_button_Click(object sender, RoutedEventArgs e)
         {
             post_note = true;
-
         }
 
         private void Board_MouseDown(object sender, MouseButtonEventArgs e)
@@ -131,6 +151,12 @@ namespace NotiX7
                 Board.Children.Add(note);
                 Canvas.SetLeft(note, Mouse.GetPosition(Board).X);
                 Canvas.SetTop(note, Mouse.GetPosition(Board).Y);
+                using (NotixBdContext db = new NotixBdContext())
+                {
+                    db.Notes.Add(new Note(1, "Илья", null, null, null, 100, 100, 1));
+                    db.SaveChanges();
+                }
+
 
                 // Методы для перемещения заметки
                 note.MouseDown += Take_a_note;
@@ -178,6 +204,8 @@ namespace NotiX7
         {
             taking_note = false;
             e.MouseDevice.Capture(null);
+
+
         }
 
         private void TextBox_Loaded(object sender, RoutedEventArgs e)
