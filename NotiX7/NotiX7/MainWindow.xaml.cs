@@ -59,7 +59,7 @@ namespace NotiX7
                 note_grid.RowDefinitions.Add(new RowDefinition());
                 note_grid.RowDefinitions.Add(new RowDefinition());
                 note_grid.RowDefinitions.Add(new RowDefinition());
-                note_grid.RowDefinitions[0].Height = new GridLength(0.5, GridUnitType.Star);
+                note_grid.RowDefinitions[0].Height = new GridLength(0.9, GridUnitType.Star);
                 note_grid.RowDefinitions[1].Height = new GridLength(2, GridUnitType.Star);
                 note_grid.RowDefinitions[2].Height = GridLength.Auto;
 
@@ -69,6 +69,7 @@ namespace NotiX7
                     Text = DateTime.Now.ToString("d"),
                     Margin = new Thickness(0, 20, 0, 0),
                 };
+
 
                 //Контент, текст заметки
                 Viewbox vb = new Viewbox
@@ -84,7 +85,7 @@ namespace NotiX7
                     BorderThickness = new Thickness(0),
                     TextWrapping = TextWrapping.Wrap,
                     MaxWidth = note.Width,
-                    MaxLength = 160,
+                    MaxLength = 170,
                     TextAlignment = TextAlignment.Center,
                     FontWeight = FontWeights.Light,
                     Background = new SolidColorBrush(Colors.Transparent),      // Правильный показатель               
@@ -105,8 +106,10 @@ namespace NotiX7
                     VerticalAlignment = VerticalAlignment.Center,
                     BorderThickness = new Thickness(0, 0, 0, 1),
                     TextWrapping = TextWrapping.Wrap,
+
+
                     MaxWidth = note.Width,
-                    MaxLength = 60,
+                    MaxLength = 40,
                     TextAlignment = TextAlignment.Center,
                     Background = new SolidColorBrush(Colors.Transparent),      // Правильный показатель    
                     FontWeight = FontWeights.Bold,
@@ -115,7 +118,7 @@ namespace NotiX7
 
                 note.Child = note_grid;
 
-                // Добавление в grid заголовок, содеражание и дату
+                // Добавление в grid заголовок, содержания и даты
                 note_grid.Children.Add(vb);
                 note_grid.Children.Add(vb_Title);
                 note_grid.Children.Add(date);
@@ -136,6 +139,20 @@ namespace NotiX7
                 note.MouseDown += Take_a_note;
                 note.MouseMove += Move_a_note;
                 note.MouseUp += Drop_a_note;
+
+                ContextMenu contextMenu = new ContextMenu();
+                note.ContextMenu = contextMenu;
+                MenuItem del = new MenuItem();
+                del.Header = "Удалить";
+                del.Click += Delete_a_note;
+                MenuItem col = new MenuItem();
+                col.Header = "Изменить цвет";
+                MenuItem red = new MenuItem();
+                red.Header = "";
+                col.Items.Add(red);
+                contextMenu.Items.Add(col);
+                contextMenu.Items.Add(del);
+
 
                 tb.Loaded += TextBox_Loaded;
 
@@ -190,7 +207,7 @@ namespace NotiX7
         {
             MenuItem menuItem = (MenuItem)sender;
             if (menuItem.Header.ToString() == "S")
-                size_note = 150;    // Маленький
+                size_note = 150;    // Маленький 
             else if (menuItem.Header.ToString() == "M")
                 size_note = 200;    // Средний
             else if (menuItem.Header.ToString() == "L")
@@ -198,10 +215,19 @@ namespace NotiX7
 
         }
 
+        private void Delete_a_note(object sender, RoutedEventArgs e)
+        {
+            MenuItem menuItem = (MenuItem)sender;
+            ContextMenu contextMenu = (ContextMenu)menuItem.Parent;
+
+            Border note = (Border)contextMenu.PlacementTarget;
+            Board.Children.Remove(note);
+
+        }
 
         private void Change_Font(object sender, RoutedEventArgs e)
         {
-            TextBox tb = sender as TextBox;
+            TextBox tb = (TextBox)sender;
             Viewbox viewbox = (Viewbox)tb.Parent;
             //MessageBox.Show(viewbox.Width.ToString());
 
