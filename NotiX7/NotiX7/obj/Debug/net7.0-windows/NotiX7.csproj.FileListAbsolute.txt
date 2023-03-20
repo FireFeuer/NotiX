@@ -88,3 +88,7 @@ C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Vi
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.csproj.CopyComplete
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\Resources\Icons\Note.png
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7_Content.g.cs
+C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\Note.g.cs
+C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\Note.baml
+C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\App.baml

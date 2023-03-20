@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotiX7"
         mc:Ignorable="d"
+        DataContext="{Binding WindowViewModel,Source={StaticResource ServiceLocator}}"
         Title="MainWindow" Height="450" Width="800" Background="DarkOliveGreen" Icon="\Resources\Icons\Note.png">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -43,6 +44,26 @@
             </WrapPanel>
         </StackPanel>
         <Canvas x:Name="Board" MouseDown="Board_MouseDown" Background="DarkOliveGreen"  Grid.Column="1">
+            <ItemsControl ItemsSource="{Binding Items}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <Canvas IsItemsHost="True"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="Canvas.Left" Value="300"/>
+                        <Setter Property="Canvas.Top" Value="100"/>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="400"
+                                Height="400"
+                                Background="Wheat"></Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </Canvas>
 
     </Grid>

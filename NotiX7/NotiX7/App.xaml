@@ -4,6 +4,10 @@
              xmlns:local="clr-namespace:NotiX7"
              StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <local:ServicesLocator x:Key="ServiceLocator"/>
+
+        </ResourceDictionary>
     </Application.Resources>
+    
 </Application>
