@@ -8,11 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Images\Note.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Images\Note.png" />
   </ItemGroup>
 
 </Project>
