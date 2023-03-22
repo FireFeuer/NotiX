@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\
+C:\Users\МОиБД\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\
 NotiX7
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\App.xaml
+C:\Users\МОиБД\source\repos\NotiX\NotiX7\NotiX7\App.xaml
 2560428252
 11521363755
 10-1632691085
-217-1539495217
+220-539613407
 Views\UserControls\Note.xaml;Views\Windows\MainWindow.xaml;
 
 False

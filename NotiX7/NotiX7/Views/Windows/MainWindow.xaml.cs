@@ -236,5 +236,18 @@ namespace NotiX7
 
             //}
         }
+
+        private void HeaderTextBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.IsReadOnly = false;
+            textBox.Focus();
+        }
+
+        private void HeaderTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.IsReadOnly= true;
+        }
     }
 }

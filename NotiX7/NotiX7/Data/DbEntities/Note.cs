@@ -33,5 +33,7 @@ public partial class Note : ObservableObject
     [ObservableProperty]
     private int y;
 
+
+
     public virtual ColorsCategory ColorNavigation { get; set; } = null!;
 }
