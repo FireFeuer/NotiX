@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {}
+    "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {}
   },
   "projects": {
-    "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {
+    "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+        "projectUniqueName": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
         "projectName": "NotiX7",
-        "projectPath": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+        "projectPath": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
         "packagesPath": "C:\\Users\\МОиБД\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
+        "outputPath": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\МОиБД\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,10 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.1.0, )"
+            },
+            "MaterialDesignThemes": {
+              "target": "Package",
+              "version": "[4.8.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
