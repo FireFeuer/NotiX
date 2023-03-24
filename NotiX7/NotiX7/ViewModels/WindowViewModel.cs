@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 
 namespace NotiX7.ViewModels
 {
@@ -14,9 +15,13 @@ namespace NotiX7.ViewModels
         [ObservableProperty]
         private List<string> _items = new List<string>();
 
+      
+
+
         public WindowViewModel()
         {
             Items= new List<string>() { "ewfwef"};
+           
         }
     }
 }
