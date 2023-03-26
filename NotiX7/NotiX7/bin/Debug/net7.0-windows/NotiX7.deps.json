@@ -12,7 +12,9 @@
           "MaterialDesignThemes": "4.8.0",
           "Microsoft.EntityFrameworkCore": "7.0.4",
           "Microsoft.EntityFrameworkCore.Sqlite": "7.0.4",
-          "Microsoft.Extensions.DependencyInjection": "7.0.0"
+          "Microsoft.EntityFrameworkCore.Tools": "7.0.4",
+          "Microsoft.Extensions.DependencyInjection": "7.0.0",
+          "gong-wpf-dragdrop": "3.2.1"
         },
         "runtime": {
           "NotiX7.dll": {}
@@ -26,11 +28,39 @@
           }
         }
       },
+      "gong-wpf-dragdrop/3.2.1": {
+        "runtime": {
+          "lib/net6.0-windows7.0/GongSolutions.WPF.DragDrop.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.2.1.12"
+          }
+        }
+      },
       "Humanizer.Core/2.14.1": {
         "runtime": {
           "lib/net6.0/Humanizer.dll": {
             "assemblyVersion": "2.14.0.0",
             "fileVersion": "2.14.1.48190"
+          }
+        }
+      },
+      "MaterialDesignColors/2.1.2": {
+        "runtime": {
+          "lib/net7.0/MaterialDesignColors.dll": {
+            "assemblyVersion": "2.1.2.0",
+            "fileVersion": "2.1.2.0"
+          }
+        }
+      },
+      "MaterialDesignThemes/4.8.0": {
+        "dependencies": {
+          "MaterialDesignColors": "2.1.2",
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.39"
+        },
+        "runtime": {
+          "lib/net7.0/MaterialDesignThemes.Wpf.dll": {
+            "assemblyVersion": "4.8.0.0",
+            "fileVersion": "4.8.0.0"
           }
         }
       },
@@ -69,6 +99,20 @@
         }
       },
       "Microsoft.EntityFrameworkCore.Analyzers/7.0.4": {},
+      "Microsoft.EntityFrameworkCore.Design/7.0.4": {
+        "dependencies": {
+          "Humanizer.Core": "2.14.1",
+          "Microsoft.EntityFrameworkCore.Relational": "7.0.4",
+          "Microsoft.Extensions.DependencyModel": "7.0.0",
+          "Mono.TextTemplating": "2.2.1"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.EntityFrameworkCore.Design.dll": {
+            "assemblyVersion": "7.0.4.0",
+            "fileVersion": "7.0.423.11504"
+          }
+        }
+      },
       "Microsoft.EntityFrameworkCore.Relational/7.0.4": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "7.0.4",
@@ -98,6 +142,11 @@
             "assemblyVersion": "7.0.4.0",
             "fileVersion": "7.0.423.11504"
           }
+        }
+      },
+      "Microsoft.EntityFrameworkCore.Tools/7.0.4": {
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.Design": "7.0.4"
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/7.0.0": {
@@ -207,6 +256,14 @@
           "lib/net7.0/Microsoft.Extensions.Primitives.dll": {
             "assemblyVersion": "7.0.0.0",
             "fileVersion": "7.0.22.51805"
+          }
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
+        "runtime": {
+          "lib/net5.0-windows7.0/Microsoft.Xaml.Behaviors.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.39.4716"
           }
         }
       },
@@ -374,6 +431,7 @@
           }
         }
       },
+      "System.CodeDom/4.4.0": {},
       "System.Memory/4.5.3": {},
       "System.Text.Encodings.Web/7.0.0": {},
       "System.Text.Json/7.0.0": {
@@ -396,12 +454,33 @@
       "path": "communitytoolkit.mvvm/8.1.0",
       "hashPath": "communitytoolkit.mvvm.8.1.0.nupkg.sha512"
     },
+    "gong-wpf-dragdrop/3.2.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-duqBiOHQobupqRdbLYcr+8BQeeuHkvPDHQs9lnLZ03sYkmJbk5ApXqgUfx7hPP7tN9qopFQKl6OlYIHixnI1iw==",
+      "path": "gong-wpf-dragdrop/3.2.1",
+      "hashPath": "gong-wpf-dragdrop.3.2.1.nupkg.sha512"
+    },
     "Humanizer.Core/2.14.1": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-lQKvtaTDOXnoVJ20ibTuSIOf2i0uO0MPbDhd1jm238I+U/2ZnRENj0cktKZhtchBMtCUSRQ5v4xBCUbKNmyVMw==",
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
+    },
+    "MaterialDesignColors/2.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7hf7MLRB6JXHj+IOLh3z2L9yBr58QhgpWQXyvffAoWdSamVO+DMEp3DqdWds0R5Rf6dp9yQ9hYUZ+wSsVZG1nQ==",
+      "path": "materialdesigncolors/2.1.2",
+      "hashPath": "materialdesigncolors.2.1.2.nupkg.sha512"
+    },
+    "MaterialDesignThemes/4.8.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rJDuWrSIqK+sA/RvZlJTlPF9Yp2YBdEZdiDtSHG/CEumkqJPMSewGga2pWF9gnRHkS5D7UWPaRRmT11Wb7F2Cw==",
+      "path": "materialdesignthemes/4.8.0",
+      "hashPath": "materialdesignthemes.4.8.0.nupkg.sha512"
     },
     "Microsoft.Data.Sqlite.Core/7.0.4": {
       "type": "package",
@@ -431,6 +510,13 @@
       "path": "microsoft.entityframeworkcore.analyzers/7.0.4",
       "hashPath": "microsoft.entityframeworkcore.analyzers.7.0.4.nupkg.sha512"
     },
+    "Microsoft.EntityFrameworkCore.Design/7.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LI/ML3w17ap5IUmEKOPVnGJYi/XSDJW3Rf42utNF0e1tidmKtSkjwoTqIKLt2hE+jQJrlzeaqu5YiqdoFWVuZw==",
+      "path": "microsoft.entityframeworkcore.design/7.0.4",
+      "hashPath": "microsoft.entityframeworkcore.design.7.0.4.nupkg.sha512"
+    },
     "Microsoft.EntityFrameworkCore.Relational/7.0.4": {
       "type": "package",
       "serviceable": true,
@@ -451,6 +537,13 @@
       "sha512": "sha512-FeuV57+U4A4DO018Jy5Wkv0uYNZhyFVUUdwyVYz8TMghsZAj+3i+fOeFtD/jAWWMzDOFOF7eMni3YqLA+ufu9Q==",
       "path": "microsoft.entityframeworkcore.sqlite.core/7.0.4",
       "hashPath": "microsoft.entityframeworkcore.sqlite.core.7.0.4.nupkg.sha512"
+    },
+    "Microsoft.EntityFrameworkCore.Tools/7.0.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-58hDB+ENGisuSjJBl1RBHL9qzFJTukFSQFl/wCU8/3ApcOH/rPrRG4PWThiJTmfHRmh8H8HExdYbtkv7wa7BLg==",
+      "path": "microsoft.entityframeworkcore.tools/7.0.4",
+      "hashPath": "microsoft.entityframeworkcore.tools.7.0.4.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/7.0.0": {
       "type": "package",
@@ -522,6 +615,13 @@
       "path": "microsoft.extensions.primitives/7.0.0",
       "hashPath": "microsoft.extensions.primitives.7.0.0.nupkg.sha512"
     },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.39": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8PZKqw9QOcu42xk8puY4P1+EXHL9YGOR9b7qhaYx5cILHul456H073tj99vyPcCt0W0781T9RwHqkx507ZyUpQ==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.39",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
+    },
     "Mono.TextTemplating/2.2.1": {
       "type": "package",
       "serviceable": true,
@@ -556,6 +656,13 @@
       "sha512": "sha512-CSlb5dUp1FMIkez9Iv5EXzpeq7rHryVNqwJMWnpq87j9zWZexaEMdisDktMsnnrzKM6ahNrsTkjqNodTBPBxtQ==",
       "path": "sqlitepclraw.provider.e_sqlite3/2.1.4",
       "hashPath": "sqlitepclraw.provider.e_sqlite3.2.1.4.nupkg.sha512"
+    },
+    "System.CodeDom/4.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2sCCb7doXEwtYAbqzbF/8UAeDRMNmPaQbU2q50Psg1J9KzumyVVCgKQY8s53WIPTufNT0DpSe9QRvVjOzfDWBA==",
+      "path": "system.codedom/4.4.0",
+      "hashPath": "system.codedom.4.4.0.nupkg.sha512"
     },
     "System.Memory/4.5.3": {
       "type": "package",

@@ -5,91 +5,171 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotiX7"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:dd="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
         mc:Ignorable="d"
         DataContext="{Binding WindowViewModel,Source={StaticResource ServiceLocator}}"
-        Title="MainWindow" Height="450" Width="800" Background="DarkOliveGreen" Icon="\Resources\Icons\Note.png">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <WrapPanel>
-                <Button Width="25" Height="25" Background="White" x:Name="Note_placement_button" Click="Note_placement_button_Click" >
-                    <Image Source="\Resources\Icons\Note.png"></Image>
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-                            <Style.Triggers>
-                                <EventTrigger RoutedEvent="Click">
-                                    <EventTrigger.Actions>
-                                        <BeginStoryboard>
-                                            <Storyboard>
-                                                <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="ContextMenu.IsOpen">
-                                                    <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="True"/>
-                                                </BooleanAnimationUsingKeyFrames>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger.Actions>
-                                </EventTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Button.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Header="S" Click="MenuItem_Click"></MenuItem>
-                            <MenuItem Header="M" Click="MenuItem_Click"/>
-                            <MenuItem Header="L" Click="MenuItem_Click"/>
-                        </ContextMenu>
-                    </Button.ContextMenu>
-                </Button>
-            </WrapPanel>
-        </StackPanel>
-        <Canvas x:Name="Board" MouseDown="Board_MouseDown" Background="#FF84BB24"  Grid.Column="1">
-            <ItemsControl ItemsSource="{Binding Items}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <Canvas IsItemsHost="True"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemContainerStyle>
-                    <Style>
-                        <Setter Property="Canvas.Left" Value="300"/>
-                        <Setter Property="Canvas.Top" Value="60"/>
-                    </Style>
-                </ItemsControl.ItemContainerStyle>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        Title="MainWindow" Height="450" Width="800"  >
+
+
+    <Border CornerRadius="5" Background="#172736" Padding="2">
+        <Grid Background="#172736">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+
+            <Grid Background="Transparent"
+              MouseDown="Grid_MouseDown">
+                <StackPanel HorizontalAlignment="Right" 
+                        Margin="0 0 6 0 "
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    Height="auto">
+                    <Image Source="/Resources/Icons/Minimize.png" 
+                   Height="20" 
+                    VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="3 0">
+                        <Image.InputBindings>
+                            <MouseBinding Gesture="LeftClick" Command="{Binding MinimizeWindowCommand}" />
+                        </Image.InputBindings>
+                        <Image.Style>
+                            <Style  TargetType="{x:Type Image}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+
+
+                    <Image Source="/Resources/Icons/Maximaze.png" 
+                   Height="20" 
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Margin="3 0">
+
+                        <Image.InputBindings>
+                            <MouseBinding Gesture="LeftClick" Command="{Binding MaximizeWindowCommand}" />
+                        </Image.InputBindings>
+
+                        <Image.Style>
+                            <Style  TargetType="{x:Type Image}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+
+
+                    <Image Source="/Resources/Icons/Close.png" 
+                    VerticalAlignment="Center"
+                   Margin="3 0 5 0"
+                 
+                Height="20" HorizontalAlignment="Right">
+                        <Image.InputBindings>
+                            <MouseBinding Gesture="LeftClick" Command="{Binding CloseWindowCommand}" />
+                        </Image.InputBindings>
+                        <Image.Style>
+                            <Style  TargetType="{x:Type Image}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Cursor" Value="Hand"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Image.Style>
+                    </Image>
+                </StackPanel>
+            </Grid>
+
+
+
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
+                    <WrapPanel>
+                        <Button Width="25" Height="25" Background="White" x:Name="Note_placement_button" Click="Note_placement_button_Click" >
+                            <Image Source="\Resources\Icons\Note.png"></Image>
+                            <Button.Style>
+                                <Style TargetType="{x:Type Button}">
+                                    <Style.Triggers>
+                                        <EventTrigger RoutedEvent="Click">
+                                            <EventTrigger.Actions>
+                                                <BeginStoryboard>
+                                                    <Storyboard>
+                                                        <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="ContextMenu.IsOpen">
+                                                            <DiscreteBooleanKeyFrame KeyTime="0:0:0" Value="True"/>
+                                                        </BooleanAnimationUsingKeyFrames>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </EventTrigger.Actions>
+                                        </EventTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                            <Button.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="S" Click="MenuItem_Click"></MenuItem>
+                                    <MenuItem Header="M" Click="MenuItem_Click"/>
+                                    <MenuItem Header="L" Click="MenuItem_Click"/>
+                                </ContextMenu>
+                            </Button.ContextMenu>
+                        </Button>
+                    </WrapPanel>
+                </StackPanel>
+                <Canvas x:Name="Board" MouseDown="Board_MouseDown" Background="#FF84BB24"  Grid.Column="1">
+                    <ItemsControl ItemsSource="{Binding Items}">
+
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <Canvas 
+                                dd:DragDrop.IsDragSource="True"
+                                dd:DragDrop.IsDropTarget="True"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+
+                        <ItemsControl.ItemContainerStyle>
+                            <Style>
+                                <Setter Property="Canvas.Left" Value="300"/>
+                                <Setter Property="Canvas.Top" Value="60"/>
+                            </Style>
+                        </ItemsControl.ItemContainerStyle>
+
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border
                                Width="300"
+                                GotMouseCapture="TextBox_GotMouseCapture"
+                                
+                                PreviewMouseLeftButtonDown="ContentExpander_MouseDown"
                                 CornerRadius="6 6 6 6"
                                 Background="Wheat"
                             Height="auto"
                                 BorderThickness="6"
                                 BorderBrush="#66F5DEB3">
 
-                            <!--<Border.Style>
-                                <Style TargetType="{x:Type Border}">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=ContentExpander, Path=IsExpanded}"
-                                                     Value="True">
-                                            <Setter Property="Height" Value="330"/>
-                                        </DataTrigger>
 
-                                        <DataTrigger Binding="{Binding ElementName=ContentExpander, Path=IsExpanded}"
-                                                     Value="False">
-                                            <Setter Property="Height" Value="auto"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Border.Style>-->
 
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="10*"/>
-                                </Grid.RowDefinitions>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="2*"/>
+                                            <RowDefinition Height="10*"/>
+                                        </Grid.RowDefinitions>
 
-                                <TextBox Grid.Row="0" 
+                                        <TextBox Grid.Row="0" 
                                            Text="Заголовок"
                                            FontSize="16"
                                          IsReadOnly="True"
@@ -101,44 +181,6 @@
                                            PreviewMouseDoubleClick="HeaderTextBox_PreviewMouseDoubleClick"
                                            TextAlignment="Center"
                                            Margin="0,3">
-                                    <TextBox.Style>
-                                        <Style TargetType="{x:Type TextBox}">
-                                            <Style.Triggers>
-                                                <Trigger Property="IsReadOnly" Value="False">
-                                                    <Setter Property="Cursor" Value="IBeam"/>
-                                                </Trigger>
-
-                                                <Trigger Property="IsReadOnly" Value="True">
-                                                    <Setter Property="Cursor" Value="Arrow"/>
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBox.Style>
-                                </TextBox>
-
-
-                                <Expander Grid.Row="1"
-                                          x:Name="ContentExpander"
-                                          Background="Wheat"
-                                          Margin="0,0,0,2"
-                                          IsExpanded="True"
-                                          ExpandDirection="Up">
-
-                                    <StackPanel Margin="10">
-
-                                       
-                                            <TextBox Text="gjnjgrjnrjtbnrjbrnbrngvrtgurthgurhguiothugieujihrjtghjrehgtjergteorjhrt"
-                                                   TextWrapping="Wrap"
-                                                      FontSize="16"
-                                                     Height="240"
-                                         IsReadOnly="True"
-                                         BorderThickness="0"
-                                      Background="Transparent"
-                                         BorderBrush="Transparent"
-                                                      LostFocus="HeaderTextBox_LostFocus"
-                                           PreviewMouseDoubleClick="HeaderTextBox_PreviewMouseDoubleClick"
-                                           TextAlignment="Center"
-                                                 Margin="0 0 0 0">
                                             <TextBox.Style>
                                                 <Style TargetType="{x:Type TextBox}">
                                                     <Style.Triggers>
@@ -152,32 +194,69 @@
                                                     </Style.Triggers>
                                                 </Style>
                                             </TextBox.Style>
-                                       
                                         </TextBox>
-                                        <StackPanel Orientation="Horizontal">
-                                            <DatePicker
+
+                                        <Expander Grid.Row="1"
+                                          x:Name="ContentExpander"
+                                          Background="Red"
+                                          Margin="0,0,0,2"
+                                          IsExpanded="True"
+                                          ExpandDirection="Up">
+                                            <StackPanel Margin="10">
+                                                <TextBox Text="gjnjgrjnrjtbnrjbrnbrngvrtgurthgurhguiothugieujihrjtghjrehgtjergteorjhrt"
+                                                   TextWrapping="Wrap"
+                                                      FontSize="16"
+                                               
+                                                     Height="240"
+                                                 GotFocus="TextBox_GotFocus"
+                                                
+                                         IsReadOnly="True"
+                                         BorderThickness="0"
+                                      Background="Transparent"
+                                         BorderBrush="Transparent"
+                                                      LostFocus="HeaderTextBox_LostFocus"
+                                           PreviewMouseDoubleClick="HeaderTextBox_PreviewMouseDoubleClick"
+                                           TextAlignment="Center"
+                                                 Margin="0 0 0 0">
+                                                    <TextBox.Style>
+                                                        <Style TargetType="{x:Type TextBox}">
+                                                            <Style.Triggers>
+                                                                <Trigger Property="IsReadOnly" Value="False">
+                                                                    <Setter Property="Cursor" Value="IBeam"/>
+                                                                </Trigger>
+
+                                                                <Trigger Property="IsReadOnly" Value="True">
+                                                                    <Setter Property="Cursor" Value="Arrow"/>
+                                                                </Trigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </TextBox.Style>
+                                                </TextBox>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <DatePicker
                                                    Width="120"
                                                    materialDesign:HintAssist.Hint="Дата начала"
                                                 Margin="10,0"/>
 
-                                            <DatePicker
+                                                    <DatePicker
                                                    Width="120"
                                                  Margin="10,0"
                                                    materialDesign:HintAssist.Hint="Дата конца"/>
-                                        </StackPanel>
-                                       
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Expander>
+                                    </Grid>
+                                </Border>
 
-                                    </StackPanel>
-                                    
-                                </Expander>
-                            </Grid>
-                            
-                           
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </Canvas>
 
-    </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Canvas>
+
+            </Grid>
+        </Grid>
+    </Border>
+    
+   
 </Window>

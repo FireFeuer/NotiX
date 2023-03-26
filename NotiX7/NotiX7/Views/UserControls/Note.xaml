@@ -5,15 +5,122 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NotiX7.Views.UserControls"
              mc:Ignorable="d" 
-             Height="300"
-             Width="300"
-             Background="White">
-    <Border>
+             Background="Wheat"
+             BorderBrush="Red"
+             BorderThickness="3"
+             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+            MouseDown="UserControl_MouseDown"
+            >
+    <Border
+                               Width="300"
+                                CornerRadius="6 6 6 6"
+                               
+                            Height="auto"
+                                BorderThickness="6"
+                                BorderBrush="#66F5DEB3">
+
+        <!--<Border.Style>
+                                <Style TargetType="{x:Type Border}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=ContentExpander, Path=IsExpanded}"
+                                                     Value="True">
+                                            <Setter Property="Height" Value="330"/>
+                                        </DataTrigger>
+
+                                        <DataTrigger Binding="{Binding ElementName=ContentExpander, Path=IsExpanded}"
+                                                     Value="False">
+                                            <Setter Property="Height" Value="auto"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Border.Style>-->
+
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
+
+            <TextBox Grid.Row="0" 
+                                           Text="Заголовок"
+                                           FontSize="16"
+                                         IsReadOnly="True"
+                                         BorderThickness="0"
+                                    Background="{x:Null}"
+                                           x:Name="HeaderTextBox"
+                                           TextAlignment="Center"
+                                           Margin="0,3">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="IsReadOnly" Value="False">
+                                <Setter Property="Cursor" Value="IBeam"/>
+                            </Trigger>
+
+                            <Trigger Property="IsReadOnly" Value="True">
+                                <Setter Property="Cursor" Value="Arrow"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+
+
+            <Expander Grid.Row="1"
+                                          x:Name="ContentExpander"
+                                        Background="{x:Null}"
+                                          Margin="0,0,0,2"
+                                          IsExpanded="True"
+                                          ExpandDirection="Up">
+
+                <StackPanel Margin="10">
+
+
+                    <TextBox Text="gjnjgrjnrjtbnrjbrnbrngvrtgurthgurhguiothugieujihrjtghjrehgtjergteorjhrt"
+                                                   TextWrapping="Wrap"
+                                                      FontSize="16"
+                             Background="{x:Null}"
+                                                     Height="240"
+                                         IsReadOnly="True"
+                                         BorderThickness="0"
+                                  
+                                           TextAlignment="Center"
+                                                 Margin="0 0 0 0">
+                        <TextBox.Style>
+                            <Style TargetType="{x:Type TextBox}">
+                                <Style.Triggers>
+                                    <Trigger Property="IsReadOnly" Value="False">
+                                        <Setter Property="Cursor" Value="IBeam"/>
+                                    </Trigger>
+
+                                    <Trigger Property="IsReadOnly" Value="True">
+                                        <Setter Property="Cursor" Value="Arrow"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+
+                    </TextBox>
+                    <StackPanel Orientation="Horizontal">
+                        <DatePicker
+                                                   Width="120"
+                                                   materialDesign:HintAssist.Hint="Дата начала"
+                                                Margin="10,0"/>
+
+                        <DatePicker
+                                                   Width="120"
+                                                 Margin="10,0"
+                                                   materialDesign:HintAssist.Hint="Дата конца"/>
+                    </StackPanel>
+
+
+                </StackPanel>
+
+            </Expander>
         </Grid>
+
+
     </Border>
+
 </UserControl>
