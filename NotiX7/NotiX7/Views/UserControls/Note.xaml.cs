@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace NotiX7.Views.UserControls
 {
     /// <summary>
-    /// Логика взаимодействия для Note.xaml
+    /// Логика взаимодействия для NOte.xaml
     /// </summary>
-    public partial class Note : UserControl
+    public partial class NOte : UserControl
     {
-        public Note()
+        public NOte()
         {
             InitializeComponent();
         }
