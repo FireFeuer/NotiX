@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:NotiX7"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{Binding WindowViewModel,Source={StaticResource ServiceLocator}}"
         Title="MainWindow" Height="450" Width="800" Background="DarkOliveGreen" Icon="\Resources\Icons\Note.png">
     <Grid>
@@ -15,7 +16,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
             <WrapPanel>
-                <Button Width="25" Height="25" Background="White" x:Name="Note_placement_button" Click="Note_placement_button_Click" >
+                <Button Width="25" Height="25" Background="White" x:Name="Note_placement_button" Command="{Binding AddNoteCommand}" >
                     <Image Source="\Resources\Icons\Note.png"></Image>
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -44,30 +45,39 @@
                 </Button>
             </WrapPanel>
         </StackPanel>
-        <Canvas x:Name="Board" MouseDown="Board_MouseDown" Background="#FF84BB24"  Grid.Column="1">
-            <ItemsControl ItemsSource="{Binding Items}">
+        <Canvas x:Name="Board" Background="#FF84BB24"  Grid.Column="1">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="MouseDown">
+                    <i:InvokeCommandAction
+                            Command="{Binding BoardMouseDownCommand}" />
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+            <ItemsControl ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas IsItemsHost="True"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemContainerStyle>
+                <!--<ItemsControl.ItemContainerStyle>
                     <Style>
                         <Setter Property="Canvas.Left" Value="300"/>
                         <Setter Property="Canvas.Top" Value="60"/>
                     </Style>
-                </ItemsControl.ItemContainerStyle>
-                <ItemsControl.ItemTemplate>
+                </ItemsControl.ItemContainerStyle>-->
+                <!--<ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border
-                               Width="300"
+                            
+                                Width="300"
                                 CornerRadius="6 6 6 6"
                                 Background="Wheat"
-                            Height="auto"
+                                Height="auto"
                                 BorderThickness="6"
+                                PreviewMouseDown="TextBox_MouseDown"
+                            
                                 BorderBrush="#66F5DEB3">
 
-                            <!--<Border.Style>
+                            --><!--<Border.Style>
                                 <Style TargetType="{x:Type Border}">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding ElementName=ContentExpander, Path=IsExpanded}"
@@ -81,7 +91,7 @@
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>
-                            </Border.Style>-->
+                            </Border.Style>--><!--
 
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -94,12 +104,13 @@
                                            FontSize="16"
                                          IsReadOnly="True"
                                          BorderThickness="0"
-                                      Background="Transparent"
+                                      Background="Green"
                                          BorderBrush="Transparent"
                                            x:Name="HeaderTextBox"
+                                           TextAlignment="Center"
                                            LostFocus="HeaderTextBox_LostFocus"
                                            PreviewMouseDoubleClick="HeaderTextBox_PreviewMouseDoubleClick"
-                                           TextAlignment="Center"
+                                         
                                            Margin="0,3">
                                     <TextBox.Style>
                                         <Style TargetType="{x:Type TextBox}">
@@ -115,30 +126,30 @@
                                         </Style>
                                     </TextBox.Style>
                                 </TextBox>
-
-
                                 <Expander Grid.Row="1"
                                           x:Name="ContentExpander"
-                                          Background="Wheat"
+                                          Background="Green"
                                           Margin="0,0,0,2"
                                           IsExpanded="True"
-                                          ExpandDirection="Up">
+                                          ExpandDirection="Up"
+                                          
+                                          >
 
-                                    <StackPanel Margin="10">
-
-                                       
-                                            <TextBox Text="gjnjgrjnrjtbnrjbrnbrngvrtgurthgurhguiothugieujihrjtghjrehgtjergteorjhrt"
+                                    <StackPanel Margin="10"
+                                                >
+                                        <TextBox Text="123"
+                                                 
                                                    TextWrapping="Wrap"
                                                       FontSize="16"
                                                      Height="240"
-                                         IsReadOnly="True"
-                                         BorderThickness="0"
-                                      Background="Transparent"
-                                         BorderBrush="Transparent"
+                                                    IsReadOnly="True"
+                                                    BorderThickness="0"
+                                                Background="Red"
+                                                BorderBrush="Transparent"
                                                       LostFocus="HeaderTextBox_LostFocus"
-                                           PreviewMouseDoubleClick="HeaderTextBox_PreviewMouseDoubleClick"
-                                           TextAlignment="Center"
-                                                 Margin="0 0 0 0">
+                                                PreviewMouseDoubleClick="HeaderTextBox_PreviewMouseDoubleClick"
+                                                     TextAlignment="Center"                                                     
+                                                    Margin="0 0 0 0">
                                             <TextBox.Style>
                                                 <Style TargetType="{x:Type TextBox}">
                                                     <Style.Triggers>
@@ -152,7 +163,6 @@
                                                     </Style.Triggers>
                                                 </Style>
                                             </TextBox.Style>
-                                       
                                         </TextBox>
                                         <StackPanel Orientation="Horizontal">
                                             <DatePicker
@@ -165,17 +175,14 @@
                                                  Margin="10,0"
                                                    materialDesign:HintAssist.Hint="Дата конца"/>
                                         </StackPanel>
-                                       
-
-                                    </StackPanel>
-                                    
+                                    </StackPanel>                                    
                                 </Expander>
                             </Grid>
                             
                            
                         </Border>
                     </DataTemplate>
-                </ItemsControl.ItemTemplate>
+                </ItemsControl.ItemTemplate>-->
             </ItemsControl>
         </Canvas>
 

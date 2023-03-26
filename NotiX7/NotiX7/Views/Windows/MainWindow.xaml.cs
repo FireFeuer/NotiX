@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -123,6 +124,8 @@ namespace NotiX7
                 note_grid.Children.Add(vb_Title);
                 note_grid.Children.Add(date);
 
+                tb.MouseDown += TakeNote;
+
                 Grid.SetRow(vb_Title, 0);
                 Grid.SetRow(vb, 1);
                 Grid.SetRow(date, 2);
@@ -161,6 +164,11 @@ namespace NotiX7
 
                 post_note = false;
             }
+        }
+
+        private void TakeNote(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("asd");
         }
 
         //Взяли заметку
@@ -239,15 +247,22 @@ namespace NotiX7
 
         private void HeaderTextBox_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            textBox.IsReadOnly = false;
-            textBox.Focus();
+            //TextBox textBox = (TextBox)sender;
+            //textBox.IsReadOnly = false;
+            //textBox.Focus();
         }
 
         private void HeaderTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
-            textBox.IsReadOnly= true;
+            //TextBox textBox = (TextBox)sender;
+            //textBox.IsReadOnly= true;
         }
+
+        private void TextBox_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Debug.WriteLine("sadasd");
+
+        }
+
     }
 }
