@@ -34,12 +34,6 @@ namespace NotiX7.ViewModels
         {
             Items = new ObservableCollection<NOte>();
 
-            NOte note = new NOte();
-
-
-            note.PreviewMouseDown += Take_a_note;
-            note.PreviewMouseMove += Move_a_note;
-            note.PreviewMouseUp += Drop_a_note;
 
         }
 
@@ -94,6 +88,8 @@ namespace NotiX7.ViewModels
                 Canvas.SetLeft(note, Mouse.GetPosition(Application.Current.MainWindow).X);
                 Canvas.SetTop(note, Mouse.GetPosition(Application.Current.MainWindow).Y);
 
+                note.HeaderTextBox.PreviewMouseDoubleClick += ChangeText;
+                note.ContentTextBox.PreviewMouseDoubleClick += ChangeText;
 
                 note.PreviewMouseDown += Take_a_note;
                 note.PreviewMouseMove += Move_a_note;
@@ -104,6 +100,15 @@ namespace NotiX7.ViewModels
                 post_note = false;
             }
         }
+
+        private void ChangeText(object sender, MouseButtonEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.Focus();
+        }
+
+
+
         [RelayCommand]
         private void SelectSize1()
         {

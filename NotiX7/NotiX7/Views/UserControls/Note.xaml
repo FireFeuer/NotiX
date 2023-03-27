@@ -18,15 +18,13 @@
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
             <TextBox Grid.Row="0"
-                     Text="Заголовок"
                      FontSize="16"
-                     IsReadOnly="True"
                      BorderThickness="0"
                      Background="Transparent"
                      BorderBrush="Transparent"
                      x:Name="HeaderTextBox"
                      TextAlignment="Center"
-                     Margin="0,3">
+                     Margin="0,3" Cursor="Arrow">
                 <TextBox.Style>
                     <Style TargetType="{x:Type TextBox}">
                         <Style.Triggers>
@@ -48,15 +46,15 @@
                       IsExpanded="True"
                       ExpandDirection="Up">
                 <StackPanel Margin="10">
-                    <TextBox Text="123"
+                    <TextBox x:Name="ContentTextBox"
                              TextWrapping="Wrap"
                              FontSize="16"
                              Height="240"
-                             IsReadOnly="True"
                              BorderThickness="0"
                              Background="Transparent"
                              BorderBrush="Transparent"
                              TextAlignment="Center"
+                             materialDesign:HintAssist.Hint="Заголовок"
                              Margin="0 0 0 0">
                         <TextBox.Style>
                             <Style TargetType="{x:Type TextBox}">
