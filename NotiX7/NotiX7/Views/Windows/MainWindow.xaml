@@ -37,9 +37,9 @@
                     </Button.Style>
                     <Button.ContextMenu>
                         <ContextMenu>
-                            <MenuItem Header="S" Click="MenuItem_Click"></MenuItem>
-                            <MenuItem Header="M" Click="MenuItem_Click"/>
-                            <MenuItem Header="L" Click="MenuItem_Click"/>
+                            <!--<MenuItem Header="S" Command="{Binding SelectSize1Command}"></MenuItem>
+                            <MenuItem Header="M" Command="{Binding SelectSize2Command}"/>
+                            <MenuItem Header="L" Command="{Binding SelectSize3Command}"/>-->
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>

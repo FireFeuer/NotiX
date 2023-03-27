@@ -20,24 +20,20 @@ namespace NotiX7.ViewModels
         bool post_note = false; // Если значение True то заметку можно разместить
         bool taking_note = false; // Возможность перемещения заметки
         Point _offsetPoint = new Point(0, 0);
+        int size_note = 150;
 
 
         [ObservableProperty]
         private ObservableCollection<NOte> _items = new ObservableCollection<NOte>();
 
-      
+        [ObservableProperty]
+        private string _s = "S";
 
 
         public WindowViewModel()
         {
             Items = new ObservableCollection<NOte>();
 
-            NOte note = new NOte();
-
-
-            note.PreviewMouseDown += Take_a_note;
-            note.PreviewMouseMove += Move_a_note;
-            note.PreviewMouseUp += Drop_a_note;
 
         }
 
@@ -48,7 +44,7 @@ namespace NotiX7.ViewModels
             post_note = false;
 
             NOte note = (NOte)sender;
-            Point posCursor = e.MouseDevice.GetPosition(note);
+            Point posCursor = e.MouseDevice.GetPosition(Application.Current.MainWindow);
             _offsetPoint = new Point(
                     posCursor.X - Canvas.GetLeft(note),
                     posCursor.Y - Canvas.GetTop(note)
@@ -61,8 +57,8 @@ namespace NotiX7.ViewModels
         {
             if (taking_note && e.LeftButton == MouseButtonState.Pressed)
             {
-                Canvas.SetLeft(sender as NOte, Mouse.GetPosition(sender as NOte).X - _offsetPoint.X);
-                Canvas.SetTop(sender as NOte, Mouse.GetPosition(sender as NOte).Y - _offsetPoint.Y);
+                Canvas.SetLeft(sender as NOte, Mouse.GetPosition(Application.Current.MainWindow).X - _offsetPoint.X);
+                Canvas.SetTop(sender as NOte, Mouse.GetPosition(Application.Current.MainWindow).Y - _offsetPoint.Y);
             }
         }
 
@@ -85,10 +81,15 @@ namespace NotiX7.ViewModels
             if (post_note)
             {
                 NOte note = new NOte();
-                Items.Add(note);
-                Canvas.SetLeft(note, 300);
-                Canvas.SetTop(note, 60);
+                //note.Width = size_note;
+                //note.Height = size_note;
 
+                Items.Add(note);
+                Canvas.SetLeft(note, Mouse.GetPosition(Application.Current.MainWindow).X);
+                Canvas.SetTop(note, Mouse.GetPosition(Application.Current.MainWindow).Y);
+
+                note.HeaderTextBox.PreviewMouseDoubleClick += ChangeText;
+                note.ContentTextBox.PreviewMouseDoubleClick += ChangeText;
 
                 note.PreviewMouseDown += Take_a_note;
                 note.PreviewMouseMove += Move_a_note;
@@ -98,6 +99,31 @@ namespace NotiX7.ViewModels
 
                 post_note = false;
             }
+        }
+
+        private void ChangeText(object sender, MouseButtonEventArgs e)
+        {
+            TextBox textBox = (TextBox)sender;
+            textBox.Focus();
+        }
+
+
+
+        [RelayCommand]
+        private void SelectSize1()
+        {
+            size_note = 150;
+        }
+        [RelayCommand]
+        private void SelectSize2()
+        {
+            MessageBox.Show(size_note.ToString());
+            size_note = 200;
+        }
+        [RelayCommand]
+        private void SelectSize3()
+        {
+            size_note = 250;
         }
     }
 }

@@ -5,30 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:NotiX7.Views.UserControls"
-             mc:Ignorable="d" 
-             Background="White">
-    <Border                            
-                                Width="300"
-                                CornerRadius="6 6 6 6"
-                                Background="Wheat"
-                                Height="auto"
-                                BorderThickness="6"                            
-                                BorderBrush="#66F5DEB3">
+             mc:Ignorable="d" >
+    <Border Width="300" 
+            CornerRadius="6 6 6 6" 
+            Background="Wheat"
+            Height="auto"
+            BorderThickness="6"
+            BorderBrush="#66F5DEB3">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="2*"/>
                 <RowDefinition Height="10*"/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0" 
-                                           Text="Заголовок"
-                                           FontSize="16"
-                                         IsReadOnly="True"
-                                         BorderThickness="0"
-                                      Background="Green"
-                                         BorderBrush="Transparent"
-                                           x:Name="HeaderTextBox"
-                                           TextAlignment="Center"
-                                           Margin="0,3">
+            <TextBox Grid.Row="0"
+                     FontSize="16"
+                     BorderThickness="0"
+                     Background="Transparent"
+                     BorderBrush="Transparent"
+                     x:Name="HeaderTextBox"
+                     TextAlignment="Center"
+                     Margin="0,3" Cursor="Arrow">
                 <TextBox.Style>
                     <Style TargetType="{x:Type TextBox}">
                         <Style.Triggers>
@@ -44,27 +40,22 @@
                 </TextBox.Style>
             </TextBox>
             <Expander Grid.Row="1"
-                                          x:Name="ContentExpander"
-                                          Background="Green"
-                                          Margin="0,0,0,2"
-                                          IsExpanded="True"
-                                          ExpandDirection="Up"
-                                          
-                                          >
-
-                <StackPanel Margin="10"
-                                                >
-                    <TextBox Text="123"
-                                                 
-                                                   TextWrapping="Wrap"
-                                                      FontSize="16"
-                                                     Height="240"
-                                                    IsReadOnly="True"
-                                                    BorderThickness="0"
-                                                Background="Red"
-                                                BorderBrush="Transparent"
-                                                     TextAlignment="Center"                                                     
-                                                    Margin="0 0 0 0">
+                      x:Name="ContentExpander"
+                      Background="Transparent"
+                      Margin="0,0,0,2"
+                      IsExpanded="True"
+                      ExpandDirection="Up">
+                <StackPanel Margin="10">
+                    <TextBox x:Name="ContentTextBox"
+                             TextWrapping="Wrap"
+                             FontSize="16"
+                             Height="240"
+                             BorderThickness="0"
+                             Background="Transparent"
+                             BorderBrush="Transparent"
+                             TextAlignment="Center"
+                             materialDesign:HintAssist.Hint="Заголовок"
+                             Margin="0 0 0 0">
                         <TextBox.Style>
                             <Style TargetType="{x:Type TextBox}">
                                 <Style.Triggers>
@@ -80,20 +71,15 @@
                         </TextBox.Style>
                     </TextBox>
                     <StackPanel Orientation="Horizontal">
-                        <DatePicker
-                                                   Width="120"
-                                                   materialDesign:HintAssist.Hint="Дата начала"
-                                                Margin="10,0"/>
-
-                        <DatePicker
-                                                   Width="120"
-                                                 Margin="10,0"
-                                                   materialDesign:HintAssist.Hint="Дата конца"/>
+                        <DatePicker Width="120"
+                                    materialDesign:HintAssist.Hint="Дата начала"
+                                    Margin="10,0"/>
+                        <DatePicker Width="120"
+                                    Margin="10,0"
+                                    materialDesign:HintAssist.Hint="Дата конца"/>
                     </StackPanel>
                 </StackPanel>
             </Expander>
         </Grid>
-
-
     </Border>
 </UserControl>
