@@ -14,10 +14,16 @@
             BorderBrush="#66F5DEB3">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="10*"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <TextBox Grid.Row="0"
+            <Grid>
+               
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <TextBox Grid.Row="0"
                      FontSize="16"
                      BorderThickness="0"
                      Background="Transparent"
@@ -25,61 +31,100 @@
                      x:Name="HeaderTextBox"
                      TextAlignment="Center"
                      Margin="0,3" Cursor="Arrow">
-                <TextBox.Style>
-                    <Style TargetType="{x:Type TextBox}">
-                        <Style.Triggers>
-                            <Trigger Property="IsReadOnly" Value="False">
-                                <Setter Property="Cursor" Value="IBeam"/>
-                            </Trigger>
+                    <TextBox.Style>
+                        <Style TargetType="{x:Type TextBox}">
+                           
+                            <Style.Triggers>
 
-                            <Trigger Property="IsReadOnly" Value="True">
-                                <Setter Property="Cursor" Value="Arrow"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </TextBox.Style>
-            </TextBox>
-            <Expander Grid.Row="1"
+                                <Trigger Property="IsReadOnly" Value="False">
+                                    <Setter Property="Cursor" Value="IBeam"/>
+                                </Trigger>
+
+                                <Trigger Property="IsReadOnly" Value="True">
+                                    <Setter Property="Cursor" Value="Arrow"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
+                <StackPanel Grid.Row="1"
                       x:Name="ContentExpander"
                       Background="Transparent"
                       Margin="0,0,0,2"
-                      IsExpanded="True"
-                      ExpandDirection="Up">
-                <StackPanel Margin="10">
-                    <TextBox x:Name="ContentTextBox"
+                      >
+                    <StackPanel Margin="10">
+                        <TextBox x:Name="ContentTextBox"
                              TextWrapping="Wrap"
                              FontSize="16"
-                             Height="240"
+                           
                              BorderThickness="0"
                              Background="Transparent"
                              BorderBrush="Transparent"
                              TextAlignment="Center"
                              materialDesign:HintAssist.Hint="Заголовок"
                              Margin="0 0 0 0">
-                        <TextBox.Style>
-                            <Style TargetType="{x:Type TextBox}">
-                                <Style.Triggers>
-                                    <Trigger Property="IsReadOnly" Value="False">
-                                        <Setter Property="Cursor" Value="IBeam"/>
-                                    </Trigger>
 
-                                    <Trigger Property="IsReadOnly" Value="True">
-                                        <Setter Property="Cursor" Value="Arrow"/>
-                                    </Trigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBox.Style>
-                    </TextBox>
-                    <StackPanel Orientation="Horizontal">
-                        <DatePicker Width="120"
+                            <TextBox.Style>
+                                <Style TargetType="{x:Type TextBox}">
+                                    <Setter Property="Height" Value="240"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=expandCheckBox, Path=IsChecked}" Value="True">
+                                            <DataTrigger.EnterActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard >
+                                                        <DoubleAnimation From="240" 
+                                                                         To="0" 
+                                                                         Storyboard.TargetProperty="Height"
+                                                                         Duration="0:0:0.2">
+
+                                                        </DoubleAnimation>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.EnterActions>
+                                            <DataTrigger.ExitActions>
+                                                <BeginStoryboard>
+                                                    <Storyboard >
+                                                        <DoubleAnimation From="0" 
+                                                                         To="240" 
+                                                                         Storyboard.TargetProperty="Height"
+                                                                         Duration="0:0:0.2">
+
+                                                        </DoubleAnimation>
+                                                    </Storyboard>
+                                                </BeginStoryboard>
+                                            </DataTrigger.ExitActions>
+                                        </DataTrigger>
+
+                                       
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
+
+                        <StackPanel Orientation="Horizontal">
+                            <DatePicker Width="120"
                                     materialDesign:HintAssist.Hint="Дата начала"
                                     Margin="10,0"/>
-                        <DatePicker Width="120"
+                            <DatePicker Width="120"
                                     Margin="10,0"
                                     materialDesign:HintAssist.Hint="Дата конца"/>
+                        </StackPanel>
+
+
                     </StackPanel>
+
                 </StackPanel>
-            </Expander>
+
+            </Grid>
+            <CheckBox Grid.Row="1" 
+                      x:Name="expandCheckBox"
+                      HorizontalAlignment="Right"
+                      Margin="0 0 10 0"
+                      Height="30"
+                      Width="30"
+                      Foreground="Transparent"
+                      PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonUp"/>
         </Grid>
+        
     </Border>
 </UserControl>
