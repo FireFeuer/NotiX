@@ -6,6 +6,13 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:NotiX7.Views.UserControls"
              mc:Ignorable="d" >
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type materialDesign:SmartHint}">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </UserControl.Resources>
+
     <Border Width="300" 
             CornerRadius="6 6 6 6" 
             Background="Wheat"
@@ -18,7 +25,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid>
-               
+
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
                     <RowDefinition Height="10*"/>
@@ -27,104 +34,93 @@
                      FontSize="16"
                      BorderThickness="0"
                      Background="Transparent"
+                     materialDesign:TextFieldAssist.UnderlineBrush="Transparent"
                      BorderBrush="Transparent"
                      x:Name="HeaderTextBox"
                      TextAlignment="Center"
+                     materialDesign:HintAssist.Hint="Заголовок"
                      Margin="0,3" Cursor="Arrow">
-                    <TextBox.Style>
-                        <Style TargetType="{x:Type TextBox}">
-                           
-                            <Style.Triggers>
 
-                                <Trigger Property="IsReadOnly" Value="False">
-                                    <Setter Property="Cursor" Value="IBeam"/>
-                                </Trigger>
-
-                                <Trigger Property="IsReadOnly" Value="True">
-                                    <Setter Property="Cursor" Value="Arrow"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </TextBox.Style>
                 </TextBox>
-                <StackPanel Grid.Row="1"
-                      x:Name="ContentExpander"
-                      Background="Transparent"
-                      Margin="0,0,0,2"
-                      >
-                    <StackPanel Margin="10">
-                        <TextBox x:Name="ContentTextBox"
+
+                <StackPanel Margin="10"
+                                Grid.Row="1">
+                    <TextBox x:Name="ContentTextBox"
                              TextWrapping="Wrap"
                              FontSize="16"
-                           
                              BorderThickness="0"
                              Background="Transparent"
                              BorderBrush="Transparent"
                              TextAlignment="Center"
-                             materialDesign:HintAssist.Hint="Заголовок"
+         materialDesign:TextFieldAssist.UnderlineBrush="Transparent"
+                             materialDesign:HintAssist.Hint="Основной текст"
                              Margin="0 0 0 0">
+                    </TextBox>
 
-                            <TextBox.Style>
-                                <Style TargetType="{x:Type TextBox}">
-                                    <Setter Property="Height" Value="240"/>
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=expandCheckBox, Path=IsChecked}" Value="True">
-                                            <DataTrigger.EnterActions>
-                                                <BeginStoryboard>
-                                                    <Storyboard >
-                                                        <DoubleAnimation From="240" 
+                    <StackPanel.Style>
+                        <Style TargetType="{x:Type StackPanel}">
+                            <Setter Property="Height" Value="240"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ElementName=expandCheckBox, Path=IsChecked}" Value="True">
+                                    <DataTrigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation From="240" 
                                                                          To="0" 
                                                                          Storyboard.TargetProperty="Height"
                                                                          Duration="0:0:0.2">
 
-                                                        </DoubleAnimation>
-                                                    </Storyboard>
-                                                </BeginStoryboard>
-                                            </DataTrigger.EnterActions>
-                                            <DataTrigger.ExitActions>
-                                                <BeginStoryboard>
-                                                    <Storyboard >
-                                                        <DoubleAnimation From="0" 
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.EnterActions>
+                                    <DataTrigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard >
+                                                <DoubleAnimation From="0" 
                                                                          To="240" 
                                                                          Storyboard.TargetProperty="Height"
                                                                          Duration="0:0:0.2">
 
-                                                        </DoubleAnimation>
-                                                    </Storyboard>
-                                                </BeginStoryboard>
-                                            </DataTrigger.ExitActions>
-                                        </DataTrigger>
-
-                                       
-                                    </Style.Triggers>
-                                </Style>
-                            </TextBox.Style>
-                        </TextBox>
-
-                        <StackPanel Orientation="Horizontal">
-                            <DatePicker Width="120"
-                                    materialDesign:HintAssist.Hint="Дата начала"
-                                    Margin="10,0"/>
-                            <DatePicker Width="120"
-                                    Margin="10,0"
-                                    materialDesign:HintAssist.Hint="Дата конца"/>
-                        </StackPanel>
+                                                </DoubleAnimation>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </DataTrigger.ExitActions>
+                                </DataTrigger>
 
 
-                    </StackPanel>
+                            </Style.Triggers>
+                        </Style>
+                    </StackPanel.Style>
 
                 </StackPanel>
 
+
+
             </Grid>
-            <CheckBox Grid.Row="1" 
+
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal">
+                <StackPanel Orientation="Horizontal"
+                         Grid.Row="1"
+                            Margin="0 5 0 10">
+                    <DatePicker Width="109"
+                                    materialDesign:HintAssist.Hint="Дата начала"
+                                    Margin="10,0"/>
+                    <DatePicker Width="109"
+                                    Margin="5,0"
+                                    materialDesign:HintAssist.Hint="Дата конца"/>
+                </StackPanel>
+                <CheckBox 
                       x:Name="expandCheckBox"
-                      HorizontalAlignment="Right"
-                      Margin="0 0 10 0"
                       Height="30"
-                      Width="30"
+                      Width="36"
+                    HorizontalAlignment="Right"
                       Foreground="Transparent"
                       PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonUp"/>
+            </StackPanel>
+
         </Grid>
-        
+
     </Border>
 </UserControl>
