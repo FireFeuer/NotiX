@@ -28,7 +28,6 @@ C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\No
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\App.g.cs
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7_MarkupCompile.cache
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7_MarkupCompile.lref
-C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.g.resources
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.AssemblyInfoInputs.cache
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.AssemblyInfo.cs
@@ -84,14 +83,11 @@ C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\ru
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\Windows\MainWindow.g.cs
-C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\Windows\MainWindow.baml
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.csproj.CopyComplete
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\Resources\Icons\Note.png
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7_Content.g.cs
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\Note.g.cs
-C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\Note.baml
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\App.baml
 C:\Users\МОиБД\source\repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\MaterialDesignColors.dll
 C:\Users\МОиБД\source\repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\MaterialDesignThemes.Wpf.dll
 C:\Users\МОиБД\source\repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\Microsoft.Xaml.Behaviors.dll
@@ -247,3 +243,7 @@ C:\Users\pavlo\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\refint\
 C:\Users\pavlo\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.pdb
 C:\Users\pavlo\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.genruntimeconfig.cache
 C:\Users\pavlo\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\ref\NotiX7.dll
+C:\Users\МОиБД\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\App.baml
+C:\Users\МОиБД\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\Note.baml
+C:\Users\МОиБД\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\Windows\MainWindow.baml
+C:\Users\МОиБД\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.g.resources

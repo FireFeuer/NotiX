@@ -18,7 +18,10 @@
             Background="Wheat"
             Height="auto"
             BorderThickness="6"
-            BorderBrush="#66F5DEB3">
+            BorderBrush="#66F5DEB3"
+            PreviewMouseMove="Border_PreviewMouseMove">
+
+        
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>

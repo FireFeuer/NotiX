@@ -11,6 +11,8 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using NotiX7.Models;
 
 namespace NotiX7.ViewModels
 {
@@ -18,13 +20,17 @@ namespace NotiX7.ViewModels
     {
 
         bool post_note = false; // Если значение True то заметку можно разместить
-        bool taking_note = false; // Возможность перемещения заметки
+        bool _isSelecting = false; // Возможность перемещения заметки
+        Point _cursorPosition;
         Point _offsetPoint = new Point(0, 0);
         int size_note = 150;
 
+        [ObservableProperty]
+        private Note _selectedNote;
+
 
         [ObservableProperty]
-        private ObservableCollection<NOte> _items = new ObservableCollection<NOte>();
+        private ObservableCollection<Note> _items = new ObservableCollection<Note>();
 
         [ObservableProperty]
         private string _s = "S";
@@ -32,41 +38,32 @@ namespace NotiX7.ViewModels
 
         public WindowViewModel()
         {
-            Items = new ObservableCollection<NOte>();
+            Items = new ObservableCollection<Note>();
 
 
         }
 
         //Взяли заметку
-        private void Take_a_note(object sender, MouseButtonEventArgs e)
+        [RelayCommand]
+        private void Take_a_note()
         {
-            taking_note = true;
-            post_note = false;
-
-            NOte note = (NOte)sender;
-            Point posCursor = e.MouseDevice.GetPosition(Application.Current.MainWindow);
-            _offsetPoint = new Point(
-                    posCursor.X - Canvas.GetLeft(note),
-                    posCursor.Y - Canvas.GetTop(note)
-            );
-            e.MouseDevice.Capture(note);
+            
+            post_note = false;        
         }
 
         //Перемещяем заметку
-        private void Move_a_note(object sender, MouseEventArgs e)
+       
+        private void Move_a_note()
         {
-            if (taking_note && e.LeftButton == MouseButtonState.Pressed)
-            {
-                Canvas.SetLeft(sender as NOte, Mouse.GetPosition(Application.Current.MainWindow).X - _offsetPoint.X);
-                Canvas.SetTop(sender as NOte, Mouse.GetPosition(Application.Current.MainWindow).Y - _offsetPoint.Y);
-            }
+            
         }
 
         //Закрепляем заметку
-        private void Drop_a_note(object sender, MouseButtonEventArgs e)
+        [RelayCommand]
+        private void Drop_a_note()
         {
-            taking_note = false;
-            e.MouseDevice.Capture(null);
+            SelectedNote = null;   
+            _isSelecting = false;
         }
 
         [RelayCommand]
@@ -78,22 +75,18 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private void BoardMouseDown()
         {
+            
+            if (Items.Count > 0)
+            {
+                Debug.WriteLine(Items[0].IsSelected.ToString());
+            }
             if (post_note)
             {
-                NOte note = new NOte();
-                //note.Width = size_note;
-                //note.Height = size_note;
+                Note note = new Note { X = 100, Y = 100 };
+                
 
                 Items.Add(note);
-                Canvas.SetLeft(note, Mouse.GetPosition(Application.Current.MainWindow).X);
-                Canvas.SetTop(note, Mouse.GetPosition(Application.Current.MainWindow).Y);
-
-                note.HeaderTextBox.PreviewMouseDoubleClick += ChangeText;
-                note.ContentTextBox.PreviewMouseDoubleClick += ChangeText;
-
-                note.PreviewMouseDown += Take_a_note;
-                note.PreviewMouseMove += Move_a_note;
-                note.PreviewMouseUp += Drop_a_note;
+               
 
 
 
@@ -124,6 +117,38 @@ namespace NotiX7.ViewModels
         private void SelectSize3()
         {
             size_note = 250;
+        }
+
+
+        //Движение заметки внутри Canvas 
+        [RelayCommand]
+        private void MoveNote()
+        {
+            
+            if (SelectedNote == null)
+            {
+                SelectedNote = Items.Where(i => i.IsSelected).SingleOrDefault();
+                _cursorPosition = Mouse.GetPosition(Application.Current.MainWindow);
+
+                if(SelectedNote!= null)
+                {
+                    _offsetPoint = new Point(
+                      _cursorPosition.X - SelectedNote.X,
+                       _cursorPosition.Y - SelectedNote.Y
+               );
+                }
+               
+            }
+
+            if (Items.Count > 0 && SelectedNote != null && SelectedNote.IsSelected == true)
+            {
+
+                Debug.WriteLine((int)_offsetPoint.Y);
+                SelectedNote.Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - (int)_offsetPoint.Y;
+                SelectedNote.X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - (int)_offsetPoint.X;
+              
+            }
+            
         }
     }
 }

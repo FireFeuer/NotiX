@@ -7,36 +7,30 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.Diagnostics;
 
 namespace NotiX7.Models
 {
-    public partial class Note: ObservableObject
+    public partial class Note: NoteDB
     {
         [ObservableProperty]
-        private int id;
+        private bool _isSelected = false;
 
-        [ObservableProperty]
-        private string? title;
 
-        [ObservableProperty]
-        private string? content;
+        [RelayCommand]
+        private void Selecting()
+        {
+            this.IsSelected= true;
+            Debug.WriteLine(IsSelected.ToString());
+        }
 
-        [ObservableProperty]
-        private DateTime firstDate;
+        [RelayCommand]
+        private void Unselecting()
+        {
+            IsSelected =false;
+            Debug.WriteLine(IsSelected.ToString());
+        }
 
-        [ObservableProperty]
-        private DateTime endDate;
-
-        [ObservableProperty]
-        private int size;
-
-        [ObservableProperty]
-        private int color;
-
-        [ObservableProperty]
-        private int x;
-
-        [ObservableProperty]
-        private int y;
     }
 }

@@ -11,5 +11,5 @@ public partial class ColorsCategory
 
     public string? Hex { get; set; }
 
-    public virtual ICollection<Note> Notes { get; } = new List<Note>();
+    public virtual ICollection<NoteDB> Notes { get; } = new List<NoteDB>();
 }

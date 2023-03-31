@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace NotiX7;
 
-public partial class Note : ObservableObject
+public partial class NoteDB : ObservableObject
 {
     [ObservableProperty]
     private int id;
@@ -36,4 +36,7 @@ public partial class Note : ObservableObject
 
 
     public virtual ColorsCategory ColorNavigation { get; set; } = null!;
+
+
+
 }

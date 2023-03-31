@@ -17,7 +17,7 @@ public partial class NotixDbContext : DbContext
 
     public virtual DbSet<ColorsCategory> ColorsCategories { get; set; }
 
-    public virtual DbSet<Note> Notes { get; set; }
+    public virtual DbSet<NoteDB> Notes { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -37,7 +37,7 @@ public partial class NotixDbContext : DbContext
             entity.Property(e => e.Text).HasColumnName("text");
         });
 
-        modelBuilder.Entity<Note>(entity =>
+        modelBuilder.Entity<NoteDB>(entity =>
         {
             entity.ToTable("note");
 

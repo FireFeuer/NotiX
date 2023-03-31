@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NotiX7.Views.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -264,5 +265,13 @@ namespace NotiX7
 
         }
 
+        private void NOte_MouseMove(object sender, MouseEventArgs e)
+        {
+            NOte note = sender as NOte;
+
+            Canvas.SetTop(note, 300);
+            Canvas.SetLeft(note, 500);
+            
+        }
     }
 }

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NotiX7"
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:uc ="clr-namespace:NotiX7.Views.UserControls"
         mc:Ignorable="d"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{Binding WindowViewModel,Source={StaticResource ServiceLocator}}"
@@ -13,6 +14,8 @@
     <Window.Resources>
         
     </Window.Resources>
+    
+    
     
     <Grid>
         <Grid.ColumnDefinitions>
@@ -51,143 +54,53 @@
             </WrapPanel>
         </StackPanel>
         <Canvas x:Name="Board" Background="#FF84BB24"  Grid.Column="1">
+            
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDown">
                     <i:InvokeCommandAction
                             Command="{Binding BoardMouseDownCommand}" />
                 </i:EventTrigger>
+                <i:EventTrigger EventName="MouseMove">
+                    <i:InvokeCommandAction
+                            Command="{Binding MoveNoteCommand}" />
+                </i:EventTrigger>
+                <i:EventTrigger EventName="MouseUp">
+                    <i:InvokeCommandAction
+                            Command="{Binding Drop_a_noteCommand}" />
+                </i:EventTrigger>
+
             </i:Interaction.Triggers>
+            
             <ItemsControl ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas IsItemsHost="True"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-                <!--<ItemsControl.ItemContainerStyle>
+
+                
+                <ItemsControl.ItemContainerStyle>
                     <Style>
-                        <Setter Property="Canvas.Left" Value="300"/>
-                        <Setter Property="Canvas.Top" Value="60"/>
+                        <Setter Property="Canvas.Left" Value="{Binding X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Setter Property="Canvas.Top" Value="{Binding Y,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </Style>
-                </ItemsControl.ItemContainerStyle>-->
-                <!--<ItemsControl.ItemTemplate>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border
-                            
-                                Width="300"
-                                CornerRadius="6 6 6 6"
-                                Background="Wheat"
-                                Height="auto"
-                                BorderThickness="6"
-                                PreviewMouseDown="TextBox_MouseDown"
-                            
-                                BorderBrush="#66F5DEB3">
-
-                            --><!--<Border.Style>
-                                <Style TargetType="{x:Type Border}">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=ContentExpander, Path=IsExpanded}"
-                                                     Value="True">
-                                            <Setter Property="Height" Value="330"/>
-                                        </DataTrigger>
-
-                                        <DataTrigger Binding="{Binding ElementName=ContentExpander, Path=IsExpanded}"
-                                                     Value="False">
-                                            <Setter Property="Height" Value="auto"/>
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </Border.Style>--><!--
-
-                            <Grid>
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="2*"/>
-                                    <RowDefinition Height="10*"/>
-                                </Grid.RowDefinitions>
-
-                                <TextBox Grid.Row="0" 
-                                           Text="Заголовок"
-                                           FontSize="16"
-                                         IsReadOnly="True"
-                                         BorderThickness="0"
-                                      Background="Green"
-                                         BorderBrush="Transparent"
-                                           x:Name="HeaderTextBox"
-                                           TextAlignment="Center"
-                                           LostFocus="HeaderTextBox_LostFocus"
-                                           PreviewMouseDoubleClick="HeaderTextBox_PreviewMouseDoubleClick"
-                                         
-                                           Margin="0,3">
-                                    <TextBox.Style>
-                                        <Style TargetType="{x:Type TextBox}">
-                                            <Style.Triggers>
-                                                <Trigger Property="IsReadOnly" Value="False">
-                                                    <Setter Property="Cursor" Value="IBeam"/>
-                                                </Trigger>
-
-                                                <Trigger Property="IsReadOnly" Value="True">
-                                                    <Setter Property="Cursor" Value="Arrow"/>
-                                                </Trigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </TextBox.Style>
-                                </TextBox>
-                                <Expander Grid.Row="1"
-                                          x:Name="ContentExpander"
-                                          Background="Green"
-                                          Margin="0,0,0,2"
-                                          IsExpanded="True"
-                                          ExpandDirection="Up"
-                                          
-                                          >
-
-                                    <StackPanel Margin="10"
-                                                >
-                                        <TextBox Text="123"
-                                                 
-                                                   TextWrapping="Wrap"
-                                                      FontSize="16"
-                                                     Height="240"
-                                                    IsReadOnly="True"
-                                                    BorderThickness="0"
-                                                Background="Red"
-                                                BorderBrush="Transparent"
-                                                      LostFocus="HeaderTextBox_LostFocus"
-                                                PreviewMouseDoubleClick="HeaderTextBox_PreviewMouseDoubleClick"
-                                                     TextAlignment="Center"                                                     
-                                                    Margin="0 0 0 0">
-                                            <TextBox.Style>
-                                                <Style TargetType="{x:Type TextBox}">
-                                                    <Style.Triggers>
-                                                        <Trigger Property="IsReadOnly" Value="False">
-                                                            <Setter Property="Cursor" Value="IBeam"/>
-                                                        </Trigger>
-
-                                                        <Trigger Property="IsReadOnly" Value="True">
-                                                            <Setter Property="Cursor" Value="Arrow"/>
-                                                        </Trigger>
-                                                    </Style.Triggers>
-                                                </Style>
-                                            </TextBox.Style>
-                                        </TextBox>
-                                        <StackPanel Orientation="Horizontal">
-                                            <DatePicker
-                                                   Width="120"
-                                                   materialDesign:HintAssist.Hint="Дата начала"
-                                                Margin="10,0"/>
-
-                                            <DatePicker
-                                                   Width="120"
-                                                 Margin="10,0"
-                                                   materialDesign:HintAssist.Hint="Дата конца"/>
-                                        </StackPanel>
-                                    </StackPanel>                                    
-                                </Expander>
-                            </Grid>
-                            
-                           
-                        </Border>
+                        <uc:NOte>
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
+                                    <i:InvokeCommandAction
+                            Command="{Binding SelectingCommand}" />
+                                </i:EventTrigger>
+                                <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
+                                    <i:InvokeCommandAction
+                          Command="{Binding UnselectingCommand}"/>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </uc:NOte>
                     </DataTemplate>
-                </ItemsControl.ItemTemplate>-->
+                </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Canvas>
 
