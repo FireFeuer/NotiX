@@ -51,12 +51,7 @@ namespace NotiX7.ViewModels
             post_note = false;        
         }
 
-        //Перемещяем заметку
-       
-        private void Move_a_note()
-        {
-            
-        }
+
 
         //Закрепляем заметку
         [RelayCommand]
@@ -65,6 +60,7 @@ namespace NotiX7.ViewModels
             SelectedNote = null;   
             _isSelecting = false;
         }
+
 
         [RelayCommand]
         private void AddNote()
@@ -82,13 +78,17 @@ namespace NotiX7.ViewModels
             }
             if (post_note)
             {
-                Note note = new Note { X = 100, Y = 100 };
+                Note note = new Note { X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30, 
+                    Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
+                    Title="Какая то хрень",
+                    Text=$"ДАААААААААААА\nЭТО ГОВНО НАКОНЕЦ ТО\nРАБОТАЕТ СУКА",
+                    FirstDate = DateTime.Now,
+                    SecondDate = DateTime.Now.AddDays(12),
+                };
                 
 
                 Items.Add(note);
                
-
-
 
                 post_note = false;
             }
@@ -127,7 +127,7 @@ namespace NotiX7.ViewModels
             
             if (SelectedNote == null)
             {
-                SelectedNote = Items.Where(i => i.IsSelected).SingleOrDefault();
+                GetSelectedNote();
                 _cursorPosition = Mouse.GetPosition(Application.Current.MainWindow);
 
                 if(SelectedNote!= null)
@@ -149,6 +149,11 @@ namespace NotiX7.ViewModels
               
             }
             
+        }
+
+        private void GetSelectedNote()
+        {
+            SelectedNote = Items.Where(i => i.IsSelected).SingleOrDefault();
         }
     }
 }

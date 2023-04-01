@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:NotiX7.Views.UserControls"
-             mc:Ignorable="d" >
+             mc:Ignorable="d"
+             x:Name="NoteUserControl">
 
     <UserControl.Resources>
         <Style TargetType="{x:Type materialDesign:SmartHint}">
@@ -18,16 +19,15 @@
             Background="Wheat"
             Height="auto"
             BorderThickness="6"
-            BorderBrush="#66F5DEB3"
-            PreviewMouseMove="Border_PreviewMouseMove">
+            BorderBrush="#66F5DEB3">
 
-        
-        <Grid>
+
+    <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
-            <Grid>
+            <Grid Cursor="">
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2*"/>
@@ -35,6 +35,7 @@
                 </Grid.RowDefinitions>
                 <TextBox Grid.Row="0"
                      FontSize="16"
+                         Text="{Binding Title}"
                      BorderThickness="0"
                      Background="Transparent"
                      materialDesign:TextFieldAssist.UnderlineBrush="Transparent"
@@ -51,6 +52,7 @@
                     <TextBox x:Name="ContentTextBox"
                              TextWrapping="Wrap"
                              FontSize="16"
+                             Text="{Binding Text}"
                              BorderThickness="0"
                              Background="Transparent"
                              BorderBrush="Transparent"
@@ -108,9 +110,11 @@
                          Grid.Row="1"
                             Margin="0 5 0 10">
                     <DatePicker Width="109"
+                                SelectedDate="{Binding FirstDate}"
                                     materialDesign:HintAssist.Hint="Дата начала"
                                     Margin="10,0"/>
                     <DatePicker Width="109"
+                                SelectedDate="{Binding SecondDate}"
                                     Margin="5,0"
                                     materialDesign:HintAssist.Hint="Дата конца"/>
                 </StackPanel>
@@ -119,8 +123,7 @@
                       Height="30"
                       Width="36"
                     HorizontalAlignment="Right"
-                      Foreground="Transparent"
-                      PreviewMouseLeftButtonDown="StackPanel_PreviewMouseLeftButtonUp"/>
+                      Foreground="Transparent"/>
             </StackPanel>
 
         </Grid>

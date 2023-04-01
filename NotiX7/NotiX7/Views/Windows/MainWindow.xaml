@@ -56,15 +56,15 @@
         <Canvas x:Name="Board" Background="#FF84BB24"  Grid.Column="1">
             
             <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDown">
+                <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                     <i:InvokeCommandAction
                             Command="{Binding BoardMouseDownCommand}" />
                 </i:EventTrigger>
-                <i:EventTrigger EventName="MouseMove">
+                <i:EventTrigger EventName="PreviewMouseMove">
                     <i:InvokeCommandAction
                             Command="{Binding MoveNoteCommand}" />
                 </i:EventTrigger>
-                <i:EventTrigger EventName="MouseUp">
+                <i:EventTrigger EventName="PreviewMouseUp">
                     <i:InvokeCommandAction
                             Command="{Binding Drop_a_noteCommand}" />
                 </i:EventTrigger>

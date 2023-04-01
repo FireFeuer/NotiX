@@ -15,17 +15,12 @@ namespace NotiX7.Views.UserControls
             InitializeComponent();
         }
 
-        private void StackPanel_PreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(nameof(Title),typeof(string),typeof(TextBlock)); 
+        public string Title
         {
-            //expandCheckBox.IsChecked = !expandCheckBox.IsChecked;
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
         }
-
-        public double X = 333;
-
-        private void Border_PreviewMouseMove(object sender, MouseEventArgs e)
-        {
-            Canvas.SetTop(this, Mouse.GetPosition(Application.Current.MainWindow).Y -100 );
-            Canvas.SetLeft(this, Mouse.GetPosition(Application.Current.MainWindow).X -100);
-        }
+       
     }
 }
