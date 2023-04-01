@@ -78,12 +78,13 @@ namespace NotiX7.ViewModels
             }
             if (post_note)
             {
-                Note note = new Note { X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30, 
+                Note note = new Note { X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
-                    Title="Какая то хрень",
-                    Text=$"ДАААААААААААА\nЭТО ГОВНО НАКОНЕЦ ТО\nРАБОТАЕТ СУКА",
+                    Title = "Какая то хрень",
+                    Text = $"ДАААААААААААА\nЭТО ГОВНО НАКОНЕЦ ТО\nРАБОТАЕТ СУКА",
                     FirstDate = DateTime.Now,
                     SecondDate = DateTime.Now.AddDays(12),
+                    ColorNavigation = new ColorsCategory { Hex = "#0600D6" }
                 };
                 
 

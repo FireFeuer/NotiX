@@ -7,6 +7,7 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:uc ="clr-namespace:NotiX7.Views.UserControls"
         mc:Ignorable="d"
+        xmlns:converters="clr-namespace:NotiX7.Assets.Converters"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{Binding WindowViewModel,Source={StaticResource ServiceLocator}}"
         Title="MainWindow" Height="450" Width="800" Background="DarkOliveGreen" Icon="\Resources\Icons\Note.png">
@@ -87,7 +88,8 @@
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <uc:NOte>
+                        <uc:NOte >
+                            
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                                     <i:InvokeCommandAction
