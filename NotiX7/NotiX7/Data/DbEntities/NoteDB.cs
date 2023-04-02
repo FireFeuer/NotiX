@@ -16,10 +16,10 @@ public partial class NoteDB : ObservableObject
     private string? text;
 
     [ObservableProperty]
-    private DateTime firstDate;
+    private string firstDate;
 
     [ObservableProperty]
-    private DateTime secondDate;
+    private string secondDate;
 
     [ObservableProperty]
     private int size;

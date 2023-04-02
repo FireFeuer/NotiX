@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using NotiX7.Models;
+using NotiX7.Data.DbEntities;
+using NotiX7.Services;
+using NotiX7.Data;
 
 namespace NotiX7.ViewModels
 {
@@ -38,9 +41,33 @@ namespace NotiX7.ViewModels
 
         public WindowViewModel()
         {
-            Items = new ObservableCollection<Note>();
+            
+            using(NotixDbContext db = new NotixDbContext())
+            {
+                Items = new ObservableCollection<Note>();
+                
+                Microsoft.EntityFrameworkCore.DbSet<NoteDB> notes = db.Notes;
 
-
+                //LoadFromDb_Class loadFromDb_Class = new LoadFromDb_Class();
+                //notes = loadFromDb_Class.LoadFromDb_Method();
+                Debug.WriteLine(notes.Count());
+                foreach (NoteDB note in notes)
+                {
+                    Note addedNote = new Note
+                    {
+                        X = note.X,
+                        Y = note.Y,
+                        Title = note.Title,
+                        Text = note.Text,
+                        FirstDate = note.FirstDate,
+                        SecondDate = note.SecondDate,
+                        ColorNavigation = new ColorsCategory { Hex = "#0600D6" }
+                    };
+                    Debug.WriteLine("sdaaaaa212");
+                    Items.Add(addedNote);
+                }
+            }
+            
         }
 
         //Взяли заметку
@@ -82,8 +109,8 @@ namespace NotiX7.ViewModels
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
                     Title = "Какая то хрень",
                     Text = $"ДАААААААААААА\nЭТО ГОВНО НАКОНЕЦ ТО\nРАБОТАЕТ СУКА",
-                    FirstDate = DateTime.Now,
-                    SecondDate = DateTime.Now.AddDays(12),
+                    FirstDate = DateTime.Now.ToString(),
+                    SecondDate = DateTime.Now.AddDays(12).ToString(),
                     ColorNavigation = new ColorsCategory { Hex = "#0600D6" }
                 };
                 
