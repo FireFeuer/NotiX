@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using NotiX7.Data.DbEntities;
 
 namespace NotiX7.Data;
 

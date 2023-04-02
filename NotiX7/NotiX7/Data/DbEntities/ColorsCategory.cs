@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NotiX7;
+namespace NotiX7.Data.DbEntities;
 
 public partial class ColorsCategory
 {

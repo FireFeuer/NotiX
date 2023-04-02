@@ -9,6 +9,7 @@ using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
+using NotiX7.Data.DbEntities;
 
 namespace NotiX7.Models
 {
