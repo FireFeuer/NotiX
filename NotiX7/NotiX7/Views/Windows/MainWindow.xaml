@@ -10,22 +10,38 @@
         xmlns:converters="clr-namespace:NotiX7.Assets.Converters"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{Binding WindowViewModel,Source={StaticResource ServiceLocator}}"
-        Title="MainWindow" Height="450" Width="800" Background="DarkOliveGreen" Icon="\Resources\Icons\Note.png">
+        Title="MainWindow" Height="450" Width="800"  Icon="\Resources\Icons\Note.png"
+       Background="#FFE4DCD0">
 
     <Window.Resources>
-        
+
     </Window.Resources>
-    
-    
-    
+
+
+
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" >
-            <WrapPanel>
-                <Button Width="25" Height="25" Background="White" x:Name="Note_placement_button" Command="{Binding AddNoteCommand}" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*"/>
+            <RowDefinition Height="60"/>
+
+        </Grid.RowDefinitions>
+
+        <Border x:Name="border" Grid.Row="1"
+                Background="#172736"
+                Margin="150 3"
+                CornerRadius="6"
+                Height="auto"
+                MaxHeight="70"
+                MaxWidth="550">
+            <StackPanel HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    Grid.Row="1">
+                <Button Width="{Binding ActualHeight, ElementName=border, Mode=OneWay}"
+                        Height="{Binding ActualHeight, ElementName=border, Mode=OneWay}" 
+                        Background="Transparent" 
+                        x:Name="Note_placement_button" 
+                        Command="{Binding AddNoteCommand}"
+                        BorderThickness="0">
                     <Image Source="\Resources\Icons\Note.png"></Image>
                     <Button.Style>
                         <Style TargetType="{x:Type Button}">
@@ -52,10 +68,11 @@
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>
-            </WrapPanel>
-        </StackPanel>
-        <Canvas x:Name="Board" Background="#FF84BB24"  Grid.Column="1">
-            
+            </StackPanel>
+        </Border>
+
+        <Canvas x:Name="Board" Grid.Row="0" Background="Transparent">
+
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                     <i:InvokeCommandAction
@@ -71,7 +88,7 @@
                 </i:EventTrigger>
 
             </i:Interaction.Triggers>
-            
+
             <ItemsControl ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -79,7 +96,7 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
-                
+
                 <ItemsControl.ItemContainerStyle>
                     <Style>
                         <Setter Property="Canvas.Left" Value="{Binding X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
@@ -89,7 +106,7 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <uc:NOte >
-                            
+
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                                     <i:InvokeCommandAction
