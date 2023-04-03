@@ -10,7 +10,7 @@
         xmlns:converters="clr-namespace:NotiX7.Assets.Converters"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{Binding WindowViewModel,Source={StaticResource ServiceLocator}}"
-        Title="MainWindow" Height="450" Width="800" Background="DarkOliveGreen" Icon="\Resources\Icons\Note.png">
+        Title="MainWindow" Height="450" Width="800" Background="White" Icon="\Resources\Icons\Note.png">
 
     <Window.Resources>
         
@@ -54,7 +54,7 @@
                 </Button>
             </WrapPanel>
         </StackPanel>
-        <Canvas x:Name="Board" Background="#FF84BB24"  Grid.Column="1">
+        <Canvas x:Name="Board" Background="White"  Grid.Column="1">
             
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">

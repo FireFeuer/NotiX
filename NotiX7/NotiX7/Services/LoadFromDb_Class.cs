@@ -18,7 +18,7 @@ namespace NotiX7.Services
             List<Note> notes = new List<Note>();
             using (NotixDbContext db = new NotixDbContext())
             {
-                
+                db.ColorsCategories.ToList();
                 Microsoft.EntityFrameworkCore.DbSet<NoteDB> notesDB;
                 notesDB = db.Notes;
                 foreach (NoteDB note in notesDB)
@@ -31,11 +31,11 @@ namespace NotiX7.Services
                         Text = note.Text,
                         FirstDate = note.FirstDate,
                         SecondDate = note.SecondDate,
-                        ColorNavigation = new ColorsCategory { Hex = note.ColorNavigation.Hex}
+                        ColorNavigation = note.ColorNavigation
                     };
                     notes.Add(addedNote);
-                 }
-             }
+                }
+            }
                 return notes.ToList();
 
         }
