@@ -87,11 +87,14 @@ namespace NotiX7.ViewModels
             {
                 Note note = new Note { X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
+
+
                     Title = "да",
                     Text = $"да да",
                     FirstDate = DateTime.Now.ToString(),
                     SecondDate = DateTime.Now.AddDays(12).ToString(),
                     ColorNavigation = new ColorsCategory { Hex = "#0600D6" }
+
                 };
                 
 

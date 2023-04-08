@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NotiX7.Data.DbEntities;
+namespace NotiX7;
 
 public partial class ColorsCategory
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
 
     public string? Text { get; set; }
 
