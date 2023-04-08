@@ -2,6 +2,21 @@
   "format": 1,
   "restore": {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+        "projectName": "NotiX7",
+        "projectPath": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+        "packagesPath": "C:\\Users\\МОиБД\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
+=======
+>>>>>>> DevTest
     "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {}
   },
   "projects": {
@@ -13,6 +28,7 @@
         "projectPath": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
         "packagesPath": "C:\\Users\\МОиБД\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
+<<<<<<< HEAD
 =======
     "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {}
   },
@@ -26,6 +42,9 @@
         "packagesPath": "C:\\Users\\МОиБД\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
 >>>>>>> master
+=======
+>>>>>>> origin/ShemenTest
+>>>>>>> DevTest
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\МОиБД\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -101,10 +120,17 @@
             }
           },
 <<<<<<< HEAD
+<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
 =======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
 >>>>>>> master
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+=======
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
+>>>>>>> origin/ShemenTest
+>>>>>>> DevTest
         }
       }
     }

@@ -1,6 +1,7 @@
 {
   "version": 2,
 <<<<<<< HEAD
+<<<<<<< HEAD
   "dgSpecHash": "2NsVv64qRjDQn/ka4waT/nLnrGchoV8n7SO044nH/9o9m6E6+pIi4NVTFnTPuXv6AnKlmOJEBsK+K30tY3RJoA==",
   "success": true,
   "projectFilePath": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
@@ -9,6 +10,16 @@
   "success": true,
   "projectFilePath": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
 >>>>>>> master
+=======
+  "dgSpecHash": "NMn0+jeF4TQjvRihwc34q6e7OBpRAiLK8FDV6dyNodzBWH/XbVRtBq1U5flXT3hoLOB5Z8sMLbv5cGBW2MZP/A==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+=======
+  "dgSpecHash": "2NsVv64qRjDQn/ka4waT/nLnrGchoV8n7SO044nH/9o9m6E6+pIi4NVTFnTPuXv6AnKlmOJEBsK+K30tY3RJoA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+>>>>>>> origin/ShemenTest
+>>>>>>> DevTest
   "expectedPackageFiles": [
     "C:\\Users\\МОиБД\\.nuget\\packages\\communitytoolkit.mvvm\\8.1.0\\communitytoolkit.mvvm.8.1.0.nupkg.sha512",
     "C:\\Users\\МОиБД\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
