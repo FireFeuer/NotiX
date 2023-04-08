@@ -1,21 +1,15 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using NotiX7.Views.UserControls;
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
+using NotiX7.Data.DbEntities;
 using NotiX7.Models;
 using NotiX7.Services;
-using NotiX7.Data;
-using NotiX7.Data.DbEntities;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace NotiX7.ViewModels
 {
@@ -41,21 +35,21 @@ namespace NotiX7.ViewModels
 
         public WindowViewModel()
         {
-            
-      
-          Items = new List<Note>();
-          LoadFromDb_Class loadFromDb_Class= new LoadFromDb_Class();
+
+
+            Items = new List<Note>();
+            LoadFromDb_Class loadFromDb_Class = new LoadFromDb_Class();
             Items = loadFromDb_Class.LoadFromDb_Method();
-           
-            
+
+
         }
 
         //Взяли заметку
         [RelayCommand]
         private void Take_a_note()
         {
-            
-            post_note = false;        
+
+            post_note = false;
         }
 
 
@@ -64,7 +58,7 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private void Drop_a_note()
         {
-            SelectedNote = null;   
+            SelectedNote = null;
             _isSelecting = false;
         }
 
@@ -78,33 +72,29 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private void BoardMouseDown()
         {
-            
+
             if (Items.Count > 0)
             {
                 Debug.WriteLine(Items[0].IsSelected.ToString());
             }
             if (post_note)
             {
-                Note note = new Note { X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
+                Note note = new Note
+                {
+                    X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
-<<<<<<< HEAD
+
                     Title = "да",
                     Text = $"да да",
                     FirstDate = DateTime.Now.ToString(),
                     SecondDate = DateTime.Now.AddDays(12).ToString(),
                     ColorNavigation = new ColorsCategory { Hex = "#0600D6" }
-=======
-                    Title = "Загаловок заметки",
-                    Text = $"Все работает\nдвигается\nхорошо",
-                    FirstDate = DateTime.Now,
-                    SecondDate = DateTime.Now.AddDays(12),
-                    ColorNavigation = new ColorsCategory { Hex = "#F99AC6" }
->>>>>>> origin/ShemenTest
+
                 };
-                
+
 
                 Items.Add(note);
-               
+
 
                 post_note = false;
             }
@@ -140,20 +130,20 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private void MoveNote()
         {
-            
+
             if (SelectedNote == null)
             {
                 GetSelectedNote();
                 _cursorPosition = Mouse.GetPosition(Application.Current.MainWindow);
 
-                if(SelectedNote!= null)
+                if (SelectedNote != null)
                 {
                     _offsetPoint = new Point(
                       _cursorPosition.X - SelectedNote.X,
                        _cursorPosition.Y - SelectedNote.Y
                );
                 }
-               
+
             }
 
             if (Items.Count > 0 && SelectedNote != null && SelectedNote.IsSelected == true)
@@ -162,9 +152,9 @@ namespace NotiX7.ViewModels
                 Debug.WriteLine((int)_offsetPoint.Y);
                 SelectedNote.Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - (int)_offsetPoint.Y;
                 SelectedNote.X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - (int)_offsetPoint.X;
-              
+
             }
-            
+
         }
 
         private void GetSelectedNote()

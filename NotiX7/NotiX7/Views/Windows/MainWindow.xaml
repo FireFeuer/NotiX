@@ -10,12 +10,9 @@
         xmlns:converters="clr-namespace:NotiX7.Assets.Converters"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{Binding WindowViewModel,Source={StaticResource ServiceLocator}}"
-<<<<<<< HEAD
-        Title="MainWindow" Height="450" Width="800" Background="White" Icon="\Resources\Icons\Note.png">
-=======
+
         Title="MainWindow" Height="450" Width="800"  Icon="\Resources\Icons\Note.png"
        Background="#FFE4DCD0">
->>>>>>> origin/ShemenTest
 
     <Window.Resources>
 
@@ -108,18 +105,12 @@
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>
-<<<<<<< HEAD
-            </WrapPanel>
-        </StackPanel>
-        <Canvas x:Name="Board" Background="White"  Grid.Column="1">
-            
-=======
+
             </StackPanel>
         </Border>
 
         <Canvas x:Name="Board" Grid.Row="0" Background="Transparent">
 
->>>>>>> origin/ShemenTest
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                     <i:InvokeCommandAction

@@ -1490,27 +1490,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\МОиБД\\.nuget\\packages\\": {}
+    "C:\\Users\\pavlo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
-      "projectUniqueName": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+      "projectUniqueName": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
       "projectName": "NotiX7",
-      "projectPath": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
-      "packagesPath": "C:\\Users\\МОиБД\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
-=======
-      "projectUniqueName": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
-      "projectName": "NotiX7",
-      "projectPath": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
-      "packagesPath": "C:\\Users\\МОиБД\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
->>>>>>> origin/ShemenTest
+      "projectPath": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+      "packagesPath": "C:\\Users\\pavlo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\МОиБД\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\pavlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1582,12 +1574,16 @@
             "privateAssets": "none"
           }
         },
-<<<<<<< HEAD
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
-=======
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
->>>>>>> origin/ShemenTest
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Ошибка чтения файла кэша C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
