@@ -5,6 +5,7 @@ using NotiX7.Models;
 using NotiX7.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
@@ -25,43 +26,37 @@ namespace NotiX7.ViewModels
         [ObservableProperty]
         private Note _selectedNote;
 
-
         [ObservableProperty]
-        private List<Note> _items = new List<Note>();
+        private ObservableCollection<Note> _items = new  ObservableCollection<Note>();
 
         [ObservableProperty]
         private string _s = "S";
 
-
         public WindowViewModel()
         {
-
-
-            Items = new List<Note>();
+            Items = new ObservableCollection<Note>();
             LoadFromDb_Class loadFromDb_Class = new LoadFromDb_Class();
             Items = loadFromDb_Class.LoadFromDb_Method();
-
-
         }
 
         //Взяли заметку
         [RelayCommand]
         private void Take_a_note()
         {
-
             post_note = false;
         }
-
-
 
         //Закрепляем заметку
         [RelayCommand]
         private void Drop_a_note()
         {
             SelectedNote = null;
+            foreach (Note note in Items)
+            {
+                note.IsSelected = false;
+            }
             _isSelecting = false;
         }
-
 
         [RelayCommand]
         private void AddNote()
@@ -71,31 +66,17 @@ namespace NotiX7.ViewModels
 
         [RelayCommand]
         private void BoardMouseDown()
-        {
-
-            if (Items.Count > 0)
-            {
-                Debug.WriteLine(Items[0].IsSelected.ToString());
-            }
+        {            
             if (post_note)
             {
                 Note note = new Note
                 {
                     X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
-
-                    Title = "да",
-                    Text = $"да да",
-                    FirstDate = DateTime.Now.ToString(),
-                    SecondDate = DateTime.Now.AddDays(12).ToString(),
-                    ColorNavigation = new ColorsCategory { Hex = "#0600D6" }
+                    ColorNavigation = new ColorsCategory { Hex = "#940294" }
 
                 };
-
-
                 Items.Add(note);
-
-
                 post_note = false;
             }
         }
@@ -105,8 +86,6 @@ namespace NotiX7.ViewModels
             TextBox textBox = (TextBox)sender;
             textBox.Focus();
         }
-
-
 
         [RelayCommand]
         private void SelectSize1()
@@ -125,7 +104,6 @@ namespace NotiX7.ViewModels
             size_note = 250;
         }
 
-
         //Движение заметки внутри Canvas 
         [RelayCommand]
         private void MoveNote()
@@ -141,20 +119,16 @@ namespace NotiX7.ViewModels
                     _offsetPoint = new Point(
                       _cursorPosition.X - SelectedNote.X,
                        _cursorPosition.Y - SelectedNote.Y
-               );
+                    );
                 }
-
             }
 
             if (Items.Count > 0 && SelectedNote != null && SelectedNote.IsSelected == true)
             {
-
-                Debug.WriteLine((int)_offsetPoint.Y);
+                //Debug.WriteLine((int)_offsetPoint.Y);
                 SelectedNote.Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - (int)_offsetPoint.Y;
                 SelectedNote.X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - (int)_offsetPoint.X;
-
             }
-
         }
 
         private void GetSelectedNote()

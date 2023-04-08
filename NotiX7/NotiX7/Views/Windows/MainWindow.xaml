@@ -152,7 +152,7 @@
                                 </i:EventTrigger>
                                 <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
                                     <i:InvokeCommandAction
-                          Command="{Binding UnselectingCommand}"/>
+                            Command="{Binding UnselectingCommand}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </uc:NOte>

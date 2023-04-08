@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {}
+    "C:\\Users\\vbaza\\source\\repos\\FireFeuer\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {
+    "C:\\Users\\vbaza\\source\\repos\\FireFeuer\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+        "projectUniqueName": "C:\\Users\\vbaza\\source\\repos\\FireFeuer\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
         "projectName": "NotiX7",
-        "projectPath": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
-        "packagesPath": "C:\\Users\\pavlo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
+        "projectPath": "C:\\Users\\vbaza\\source\\repos\\FireFeuer\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+        "packagesPath": "C:\\Users\\vbaza\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vbaza\\source\\repos\\FireFeuer\\NotiX\\NotiX7\\NotiX7\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\pavlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vbaza\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -65,6 +65,10 @@
             "Microsoft.Extensions.DependencyInjection": {
               "target": "Package",
               "version": "[7.0.0, )"
+            },
+            "Microsoft.Xaml.Behaviors.Wpf": {
+              "target": "Package",
+              "version": "[1.1.39, )"
             }
           },
           "imports": [
@@ -86,7 +90,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

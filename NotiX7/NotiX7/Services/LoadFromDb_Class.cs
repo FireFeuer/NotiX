@@ -7,15 +7,15 @@ using System.Text;
 using System.Threading.Tasks;
 using NotiX7.Models;
 using NotiX7.Views.UserControls;
-
+using System.Collections.ObjectModel;
 
 namespace NotiX7.Services
 {
     public class LoadFromDb_Class
     {
-        public List<Note> LoadFromDb_Method()
+        public ObservableCollection<Note> LoadFromDb_Method()
         {
-            List<Note> notes = new List<Note>();
+            ObservableCollection<Note> notes = new ObservableCollection<Note>();
             using (NotixDbContext db = new NotixDbContext())
             {
                 db.ColorsCategories.ToList();
@@ -36,7 +36,7 @@ namespace NotiX7.Services
                     notes.Add(addedNote);
                 }
             }
-                return notes.ToList();
+            return notes;
 
         }
     }

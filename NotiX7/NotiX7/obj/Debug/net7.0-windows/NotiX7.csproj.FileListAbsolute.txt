@@ -401,3 +401,4 @@ C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\ref\NotiX7.dll
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\Assets\Databases\NotixDB.db
 C:\Users\pavlo\source\repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\Assets\Databases\NotixDB.db
+C:\Users\vbaza\source\repos\FireFeuer\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\Assets\Databases\NotixDB.db
