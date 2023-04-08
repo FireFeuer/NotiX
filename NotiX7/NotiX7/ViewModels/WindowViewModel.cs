@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using NotiX7.Models;
+using NotiX7.Services;
+using NotiX7.Data;
+using NotiX7.Data.DbEntities;
 
 namespace NotiX7.ViewModels
 {
@@ -30,7 +33,7 @@ namespace NotiX7.ViewModels
 
 
         [ObservableProperty]
-        private ObservableCollection<Note> _items = new ObservableCollection<Note>();
+        private List<Note> _items = new List<Note>();
 
         [ObservableProperty]
         private string _s = "S";
@@ -38,9 +41,13 @@ namespace NotiX7.ViewModels
 
         public WindowViewModel()
         {
-            Items = new ObservableCollection<Note>();
-
-
+            
+      
+          Items = new List<Note>();
+          LoadFromDb_Class loadFromDb_Class= new LoadFromDb_Class();
+            Items = loadFromDb_Class.LoadFromDb_Method();
+           
+            
         }
 
         //Взяли заметку
@@ -80,11 +87,14 @@ namespace NotiX7.ViewModels
             {
                 Note note = new Note { X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
-                    Title = "Загаловок заметки",
-                    Text = $"Все работает\nдвигается\nхорошо",
-                    FirstDate = DateTime.Now,
-                    SecondDate = DateTime.Now.AddDays(12),
-                    ColorNavigation = new ColorsCategory { Hex = "#F99AC6" }
+
+
+                    Title = "да",
+                    Text = $"да да",
+                    FirstDate = DateTime.Now.ToString(),
+                    SecondDate = DateTime.Now.AddDays(12).ToString(),
+                    ColorNavigation = new ColorsCategory { Hex = "#0600D6" }
+
                 };
                 
 

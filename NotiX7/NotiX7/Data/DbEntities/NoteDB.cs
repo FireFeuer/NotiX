@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace NotiX7;
+namespace NotiX7.Data.DbEntities;
 
 public partial class NoteDB : ObservableObject
 {
@@ -16,10 +16,10 @@ public partial class NoteDB : ObservableObject
     private string? text;
 
     [ObservableProperty]
-    private DateTime firstDate;
+    private string firstDate;
 
     [ObservableProperty]
-    private DateTime secondDate;
+    private string secondDate;
 
     [ObservableProperty]
     private int size;
@@ -32,6 +32,9 @@ public partial class NoteDB : ObservableObject
 
     [ObservableProperty]
     private int y;
+
+    [ObservableProperty]
+    private int is_open;
 
 
 

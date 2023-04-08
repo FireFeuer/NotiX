@@ -10,8 +10,10 @@
         xmlns:converters="clr-namespace:NotiX7.Assets.Converters"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         DataContext="{Binding WindowViewModel,Source={StaticResource ServiceLocator}}"
+
         Title="MainWindow" Height="450" Width="800"  Icon="\Resources\Icons\Note.png"
        Background="#FFE4DCD0">
+
 
     <Window.Resources>
 
@@ -104,6 +106,7 @@
                         </ContextMenu>
                     </Button.ContextMenu>
                 </Button>
+
             </StackPanel>
         </Border>
 
