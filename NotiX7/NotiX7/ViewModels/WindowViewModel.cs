@@ -3,19 +3,16 @@ using CommunityToolkit.Mvvm.Input;
 using NotiX7.Data.DbEntities;
 using NotiX7.Models;
 using NotiX7.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NotiX7.ViewModels
 {
     public partial class WindowViewModel : ObservableObject
     {
+        private readonly NoteService _noteSevice;
 
         bool post_note = false; // Если значение True то заметку можно разместить
         bool _isSelecting = false; // Возможность перемещения заметки
@@ -27,28 +24,29 @@ namespace NotiX7.ViewModels
         private Note _selectedNote;
 
         [ObservableProperty]
-        private ObservableCollection<Note> _items = new  ObservableCollection<Note>();
+        private ObservableCollection<Note> _items = new ObservableCollection<Note>();
 
         [ObservableProperty]
         private string _s = "S";
 
-        public WindowViewModel()
+
+        public WindowViewModel(NoteService noteService)
         {
+            _noteSevice = noteService;
+
             Items = new ObservableCollection<Note>();
-            LoadFromDb_Class loadFromDb_Class = new LoadFromDb_Class();
-            Items = loadFromDb_Class.LoadFromDb_Method();
+
+
+            Items = _noteSevice.LoadNotesFromDb();
+
         }
 
-        //Взяли заметку
-        [RelayCommand]
-        private void Take_a_note()
-        {
-            post_note = false;
-        }
+
 
         //Закрепляем заметку
+        //Отпускаем заметку, здесь делаем сохранение
         [RelayCommand]
-        private void Drop_a_note()
+        private void DropNote()
         {
             SelectedNote = null;
             foreach (Note note in Items)
@@ -64,9 +62,11 @@ namespace NotiX7.ViewModels
             post_note = true;
         }
 
+
+        // Добавление новой заметки
         [RelayCommand]
         private void BoardMouseDown()
-        {            
+        {
             if (post_note)
             {
                 Note note = new Note
@@ -81,11 +81,7 @@ namespace NotiX7.ViewModels
             }
         }
 
-        private void ChangeText(object sender, MouseButtonEventArgs e)
-        {
-            TextBox textBox = (TextBox)sender;
-            textBox.Focus();
-        }
+
 
         [RelayCommand]
         private void SelectSize1()

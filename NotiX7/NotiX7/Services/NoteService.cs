@@ -1,19 +1,14 @@
 ﻿using NotiX7.Data;
 using NotiX7.Data.DbEntities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NotiX7.Models;
-using NotiX7.Views.UserControls;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 namespace NotiX7.Services
 {
-    public class LoadFromDb_Class
+    public class NoteService
     {
-        public ObservableCollection<Note> LoadFromDb_Method()
+        public ObservableCollection<Note> LoadNotesFromDb()
         {
             ObservableCollection<Note> notes = new ObservableCollection<Note>();
             using (NotixDbContext db = new NotixDbContext())
@@ -42,19 +37,19 @@ namespace NotiX7.Services
     }
 
 }
-   
-    
-      
-        
-            
-            
-                 
-               
 
-              
-            
-            
-               
-            
-        
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
