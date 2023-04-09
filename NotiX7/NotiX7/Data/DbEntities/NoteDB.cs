@@ -8,6 +8,8 @@ public partial class NoteDB : ObservableObject
 {
     [ObservableProperty]
     private int id;
+        
+
 
     [ObservableProperty]
     private string? title;

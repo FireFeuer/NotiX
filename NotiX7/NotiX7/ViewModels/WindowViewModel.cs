@@ -1,12 +1,16 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using NotiX7.Data;
 using NotiX7.Data.DbEntities;
 using NotiX7.Models;
 using NotiX7.Services;
+using NotiX7.Views.UserControls;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using Microsoft.EntityFrameworkCore.Sqlite;
+using Microsoft.EntityFrameworkCore;
 
 namespace NotiX7.ViewModels
 {
@@ -38,6 +42,7 @@ namespace NotiX7.ViewModels
 
 
             Items = _noteSevice.LoadNotesFromDb();
+           
 
         }
 
@@ -46,38 +51,56 @@ namespace NotiX7.ViewModels
         //Закрепляем заметку
         //Отпускаем заметку, здесь делаем сохранение
         [RelayCommand]
-        private void DropNote()
+        private async void DropNote()
         {
+       
+            NoteService noteService = new NoteService();
+            await noteService.ChangeUploadingNotesToTheDb(SelectedNote);       
             SelectedNote = null;
+          
             foreach (Note note in Items)
             {
                 note.IsSelected = false;
+              
+
             }
+           
             _isSelecting = false;
+
+            
         }
 
         [RelayCommand]
         private void AddNote()
         {
+         
             post_note = true;
         }
 
 
         // Добавление новой заметки
         [RelayCommand]
-        private void BoardMouseDown()
+        private async void BoardMouseDown()
         {
             if (post_note)
             {
                 Note note = new Note
-                {
+                {         
+                    Id = Items.Count + 1,
                     X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
-                    ColorNavigation = new ColorsCategory { Hex = "#940294" }
-
+                    ColorNavigation = new ColorsCategory { Hex = "#A86540" },
+                    Color = 1,
+                    Title = "",
+                    Text = "",
+                    FirstDate = "",
+                    SecondDate = ""                   
                 };
                 Items.Add(note);
                 post_note = false;
+
+                NoteService noteService = new NoteService();
+                await noteService.AddUploadingNotesToTheDb(note);
             }
         }
 

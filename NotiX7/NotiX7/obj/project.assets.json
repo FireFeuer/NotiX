@@ -1491,19 +1491,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\pavlo\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
       "projectName": "NotiX7",
-      "projectPath": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
-      "packagesPath": "C:\\Users\\pavlo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
+      "projectPath": "C:\\Users\\Admin\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Admin\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\pavlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1579,7 +1579,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }
