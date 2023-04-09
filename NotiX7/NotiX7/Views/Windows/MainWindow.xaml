@@ -145,7 +145,7 @@
         <uc:ColorPanelUserControl 
             Height="200"
             VerticalAlignment="Bottom"
-          Width="330" Margin="235,164,235,10"/>
+          Width="330" />
 
     </Grid>
 </Window>

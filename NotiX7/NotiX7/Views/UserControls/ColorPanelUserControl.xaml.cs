@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NotiX7.Views.UserControls
@@ -20,10 +18,10 @@ namespace NotiX7.Views.UserControls
 
         }
 
-      
+
         private void UserControl_Loaded(object sender, System.Windows.RoutedEventArgs e)
         {
-        
+
         }
 
         private void scrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)

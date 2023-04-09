@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:NotiX7.Views.UserControls"
+             xmlns:converters ="clr-namespace:NotiX7.Assets.Converters"
              mc:Ignorable="d"
              Loaded="UserControl_Loaded"
              >
@@ -40,7 +41,8 @@
                               VerticalScrollBarVisibility="Visible"
                               PreviewMouseWheel="scrollViewer_PreviewMouseWheel">
 
-                        <ListView ItemsSource="{Binding Items}"
+                        <ListView ItemsSource="{Binding 
+                            Colors}"
                                   Margin="0 0 0 30">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
@@ -51,11 +53,11 @@
                                         </Grid.ColumnDefinitions>
 
                                         <Ellipse Grid.Column="0"
-                                                 Fill="Red"
-                                                 Stroke="Yellow"
+                                                 Fill="{Binding Hex, Converter= {converters:StringToBrushConverter}}"
+                                                 Stroke="{Binding Hex, Converter={converters:BackgroundToBotderBrushConverter}}"
                                                  StrokeThickness="3"
-                                                 Width="50"
-                                                 Height="50"/>
+                                                 Width="40"
+                                                 Height="40"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
