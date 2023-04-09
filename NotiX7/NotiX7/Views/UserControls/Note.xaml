@@ -16,6 +16,7 @@
     </UserControl.Resources>
 
     <Border x:Name="border" Width="340" 
+           
             CornerRadius="6 6 6 6" 
             Background="{Binding ColorNavigation.Hex, Converter={converters:StringToBrushConverter}}"
             Height="auto"
