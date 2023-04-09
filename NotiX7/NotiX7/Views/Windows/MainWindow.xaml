@@ -27,88 +27,7 @@
 
         </Grid.RowDefinitions>
 
-        <Border x:Name="border" Grid.Row="1"
-                Background="#172736"
-                Margin="150 3"
-                CornerRadius="6"
-                Height="auto"
-                MaxHeight="70"
-                MaxWidth="550">
-            <StackPanel HorizontalAlignment="Center" 
-                    VerticalAlignment="Center"
-                    Grid.Row="1">
-                <Button Width="{Binding ActualHeight, ElementName=border, Mode=OneWay}"
-                        Height="{Binding ActualHeight, ElementName=border, Mode=OneWay}" 
-                        Background="Transparent" 
-                        x:Name="Note_placement_button" 
-                        Command="{Binding AddNoteCommand}"
-                        BorderThickness="0"
-                        BorderBrush="White">
-                    <Image Source="\Resources\Icons\Note.png"
-                           Margin="1 0 3 0"></Image>
-                    <Button.Resources>
-        <Style TargetType="Border">
-            <Setter Property="CornerRadius" Value="5"/>
-        </Style>
-    </Button.Resources>
-                    <Button.Style>
-                        <Style TargetType="{x:Type Button}">
-
-                            <Setter Property="Template">
-                                <Setter.Value>
-                                    <ControlTemplate TargetType="{x:Type Button}">
-                                        <Border Background="{TemplateBinding Background}" 
-                                                BorderThickness="{TemplateBinding BorderThickness}"
-                                                BorderBrush="{TemplateBinding BorderBrush}">
-                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                        </Border>
-                                    </ControlTemplate>
-                                </Setter.Value>
-                            </Setter>
-                            
-                            <Style.Triggers>
-                                <EventTrigger RoutedEvent="MouseEnter">
-                                    <EventTrigger.Actions>
-                                        <BeginStoryboard>
-                                            <Storyboard Storyboard.TargetProperty="BorderThickness">
-                                                <ThicknessAnimation From="0" 
-                                                                 To="3"
-                                                                  Duration="0:0:0.03">
-                                                    
-                                                </ThicknessAnimation>
-                                            </Storyboard>
-                                        </BeginStoryboard>
-                                    </EventTrigger.Actions>
-                                </EventTrigger>
-
-                                <EventTrigger RoutedEvent="MouseLeave">
-                                <EventTrigger.Actions>
-                                    <BeginStoryboard>
-                                        <Storyboard Storyboard.TargetProperty="BorderThickness">
-                                            <ThicknessAnimation From="3" 
-                                                                 To="0"
-                                                                  Duration="0:0:0.03">
-
-                                            </ThicknessAnimation>
-                                        </Storyboard>
-                                    </BeginStoryboard>
-                                </EventTrigger.Actions>
-                                </EventTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                    <Button.ContextMenu>
-                        <ContextMenu>
-                            <!--<MenuItem Header="S" Command="{Binding SelectSize1Command}"></MenuItem>
-                            <MenuItem Header="M" Command="{Binding SelectSize2Command}"/>
-                            <MenuItem Header="L" Command="{Binding SelectSize3Command}"/>-->
-                        </ContextMenu>
-                    </Button.ContextMenu>
-                </Button>
-
-            </StackPanel>
-        </Border>
-
+      
         <Canvas x:Name="Board" Grid.Row="0" Background="Transparent">
 
             <i:Interaction.Triggers>
@@ -127,7 +46,8 @@
 
             </i:Interaction.Triggers>
 
-            <ItemsControl ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+            <ItemsControl ItemsSource="{Binding Items, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                          x:Name="itemsControl">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <Canvas IsItemsHost="True"/>
@@ -137,13 +57,14 @@
 
                 <ItemsControl.ItemContainerStyle>
                     <Style>
+                        
                         <Setter Property="Canvas.Left" Value="{Binding X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Setter Property="Canvas.Top" Value="{Binding Y,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                     </Style>
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <uc:NOte >
+                        <uc:NOte PreviewMouseDown="NOte_MouseDown">
 
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
@@ -160,6 +81,71 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Canvas>
+
+        <Border x:Name="border" Grid.Row="1"
+                Background="#172736"
+                Margin="150 3"
+                CornerRadius="6"
+                Height="auto"
+                MaxHeight="70"
+                MaxWidth="550">
+            <StackPanel HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    Grid.Row="1">
+                <Button Width="{Binding ActualHeight, ElementName=border, Mode=OneWay}"
+                        Height="{Binding ActualHeight, ElementName=border, Mode=OneWay}" 
+                        Background="Transparent" 
+                        x:Name="Note_placement_button" 
+                        Command="{Binding AddNoteCommand}"
+                        BorderThickness="0"
+                        Margin="6"
+                        BorderBrush="White">
+
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Style>
+                        <Style TargetType="{x:Type Button}">
+
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="{x:Type Button}">
+                                        <Image Source="\Resources\Icons\PreNote.png"
+                           Margin="1 0 3 0"
+                           x:Name="_image"></Image>
+
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="_image" Property="Source" Value="\Resources\Icons\Note.png"/>
+                                            </Trigger>
+                                            <Trigger Property="IsMouseOver" Value="False">
+                                                <Setter TargetName="_image" Property="Source" Value="\Resources\Icons\PreNote.png"/>
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+
+                        </Style>
+                    </Button.Style>
+                    <Button.ContextMenu>
+                        <ContextMenu>
+                            <!--<MenuItem Header="S" Command="{Binding SelectSize1Command}"></MenuItem>
+                            <MenuItem Header="M" Command="{Binding SelectSize2Command}"/>
+                            <MenuItem Header="L" Command="{Binding SelectSize3Command}"/>-->
+                        </ContextMenu>
+                    </Button.ContextMenu>
+                </Button>
+
+            </StackPanel>
+        </Border>
+
+        <uc:ColorPanelUserControl 
+            Height="200"
+            VerticalAlignment="Bottom"
+          Width="330" Margin="235,164,235,10"/>
 
     </Grid>
 </Window>

@@ -9,12 +9,21 @@ NotiX7
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
+<<<<<<< HEAD
 C:\Users\Admin\source\repos\NotiX\NotiX7\NotiX7\App.xaml
 2560428252
 2451102983
 15459223
 2201443097188
 Views\UserControls\Note.xaml;Views\Windows\MainWindow.xaml;
+=======
+C:\Users\pavlo\source\repos\NotiX\NotiX7\NotiX7\App.xaml
+31350265644
+31741437886
+15-89568535
+220-1382971169
+Views\UserControls\ColorPanelUserControl.xaml;Views\UserControls\Note.xaml;Views\Windows\MainWindow.xaml;
+>>>>>>> Shemen1
 
 False
 

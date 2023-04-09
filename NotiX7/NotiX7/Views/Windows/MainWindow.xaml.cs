@@ -42,6 +42,7 @@ namespace NotiX7
 
         private void Board_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            #region Устаревшее передвижение
             if (post_note)
             {
                 // Заметка
@@ -164,7 +165,8 @@ namespace NotiX7
                 tb.TextChanged += Change_Font;
 
                 post_note = false;
-            }
+            } 
+            #endregion
         }
 
         private void TakeNote(object sender, MouseButtonEventArgs e)
@@ -272,6 +274,14 @@ namespace NotiX7
             Canvas.SetTop(note, 300);
             Canvas.SetLeft(note, 500);
             
+        }
+
+        private void NOte_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            int count = itemsControl.Items.Count;
+
+            NOte? note = sender as NOte;
+            Panel.SetZIndex(note,100);
         }
     }
 }
