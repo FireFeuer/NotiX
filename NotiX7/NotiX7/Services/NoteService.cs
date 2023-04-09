@@ -26,6 +26,7 @@ namespace NotiX7.Services
                 {
                     Note addedNote = new Note
                     {
+                        Id = note.Id,
                         X = note.X,
                         Y = note.Y,
                         Title = note.Title,
@@ -68,18 +69,8 @@ namespace NotiX7.Services
             {
                 foreach(var noteDB in db.Notes)
                 {
-                    if(note.Title == noteDB.Title)
+                    if(note.Id == noteDB.Id)
                     {
-
-                        //noteDB.Title = "ASD";
-                        //noteDB.Text = "SAD";
-                        //noteDB.FirstDate = "11/11/1111";
-                        //noteDB.SecondDate = "12/12/1200";
-                        //noteDB.Size = 1;
-                        //noteDB.Color = 1;
-                        //noteDB.X = 111;
-                        //noteDB.Y = 124;
-                        //noteDB.Is_open = 1;
                         noteDB.Title = note.Title;
                         noteDB.Text = note.Text;
                         noteDB.FirstDate = note.FirstDate;
@@ -89,10 +80,8 @@ namespace NotiX7.Services
                         noteDB.X = note.X;
                         noteDB.Y = note.Y;
                         noteDB.Is_open = note.Is_open;
-                        MessageBox.Show("sad");
-                        MessageBox.Show(noteDB.Id.ToString());
-                    }
-                     
+                       
+                    }                     
                 }
              
                 db.SaveChanges();

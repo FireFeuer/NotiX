@@ -85,7 +85,8 @@ namespace NotiX7.ViewModels
             if (post_note)
             {
                 Note note = new Note
-                {                
+                {         
+                    Id = Items.Count + 1,
                     X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
                     ColorNavigation = new ColorsCategory { Hex = "#A86540" },

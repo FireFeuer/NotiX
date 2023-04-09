@@ -36,7 +36,7 @@
                 </Grid.RowDefinitions>
                 <TextBox Grid.Row="0"
                      FontSize="16"
-                         Text="{Binding Title}"
+                         Text="{Binding Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      BorderThickness="0"
                      Background="Transparent"
                      materialDesign:TextFieldAssist.UnderlineBrush="Transparent"
@@ -53,7 +53,7 @@
                     <TextBox x:Name="ContentTextBox"
                              TextWrapping="Wrap"
                              FontSize="16"
-                             Text="{Binding Text}"
+                             Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              BorderThickness="0"
                              Background="Transparent"
                              BorderBrush="Transparent"
@@ -112,11 +112,11 @@
                          Grid.Row="1"
                             Margin="0 5 0 10">
                     <DatePicker Width="109"
-                                SelectedDate="{Binding FirstDate}"
+                                SelectedDate="{Binding FirstDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     materialDesign:HintAssist.Hint="Дата начала"
                                     Margin="10,0"/>
                     <DatePicker Width="109"
-                                SelectedDate="{Binding SecondDate}"
+                                SelectedDate="{Binding SecondDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                     Margin="5,0"
                                     materialDesign:HintAssist.Hint="Дата конца"/>
                 </StackPanel>
