@@ -1,10 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using NotiX7.Services;
 using NotiX7.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NotiX7
 {
@@ -16,8 +12,11 @@ namespace NotiX7
         {
             ServiceCollection services = new ServiceCollection();
 
+            services.AddTransient<NoteService>();
+
             services.AddTransient<WindowViewModel>();
-           
+
+
             provider = services.BuildServiceProvider();
             foreach (var service in services)
             {
@@ -25,7 +24,7 @@ namespace NotiX7
             }
 
         }
-       
+
         public WindowViewModel WindowViewModel => provider.GetRequiredService<WindowViewModel>();
     }
 }

@@ -122,7 +122,7 @@
                 </i:EventTrigger>
                 <i:EventTrigger EventName="PreviewMouseUp">
                     <i:InvokeCommandAction
-                            Command="{Binding Drop_a_noteCommand}" />
+                            Command="{Binding DropNoteCommand}" />
                 </i:EventTrigger>
 
             </i:Interaction.Triggers>
@@ -152,7 +152,7 @@
                                 </i:EventTrigger>
                                 <i:EventTrigger EventName="PreviewMouseLeftButtonUp">
                                     <i:InvokeCommandAction
-                          Command="{Binding UnselectingCommand}"/>
+                            Command="{Binding UnselectingCommand}"/>
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </uc:NOte>

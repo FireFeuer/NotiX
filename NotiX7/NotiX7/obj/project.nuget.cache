@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Sfl6NhkdYg1P2H37qmVK1cQFfg/6jC/vu7r1uIs9rwAqGLepuGEOELPKLvBh453no3cZ/OGLLcOR8mMZ0mYpuA==",
+  "dgSpecHash": "y9umD4G01GZ1O4wMt8sbkt/EQcnhA0OjUOWaAWuv9RYfLiFpN/9ptb3XUlHnByHc3NYbPxie4PleblOO9+wmEA==",
   "success": true,
   "projectFilePath": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
   "expectedPackageFiles": [
@@ -38,12 +38,5 @@
     "C:\\Users\\pavlo\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\pavlo\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Ошибка чтения файла кэша C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\obj\\project.nuget.cache: Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }
