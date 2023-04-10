@@ -51,7 +51,7 @@ namespace NotiX7.Services
                     FirstDate = note.FirstDate,
                     SecondDate = note.SecondDate,
                     Size = note.Size,
-                    Color = note.Color,
+                    Color = 7,
                     X = note.X,
                     Y = note.Y,
                     Is_open = note.Is_open,
@@ -74,7 +74,7 @@ namespace NotiX7.Services
                             noteDB.FirstDate = note.FirstDate;
                             noteDB.SecondDate = note.SecondDate;
                             noteDB.Size = note.Size;
-                            noteDB.Color = 1;
+                            noteDB.Color = note.ColorNavigation.Id;
                             noteDB.X = note.X;
                             noteDB.Y = note.Y;
                             noteDB.Is_open = note.Is_open;

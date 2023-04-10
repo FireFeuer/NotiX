@@ -20,5 +20,10 @@ namespace NotiX7.Views.UserControls
             set { SetValue(TitleProperty, value); }
         }
 
+        private void border_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+           
+         
+        }
     }
 }

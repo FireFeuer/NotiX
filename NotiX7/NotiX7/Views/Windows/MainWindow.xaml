@@ -9,6 +9,7 @@
         mc:Ignorable="d"
         xmlns:converters="clr-namespace:NotiX7.Assets.Converters"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        WindowState="Maximized"
         DataContext="{Binding WindowViewModel,Source={StaticResource ServiceLocator}}"
 
         Title="MainWindow" Height="450" Width="800"  Icon="\Resources\Icons\Note.png"
@@ -60,6 +61,8 @@
                         
                         <Setter Property="Canvas.Left" Value="{Binding X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Setter Property="Canvas.Top" Value="{Binding Y,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Setter Property="Canvas.ZIndex" Value="{Binding Z, UpdateSourceTrigger=PropertyChanged}"/>
+                        
                     </Style>
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemTemplate>
@@ -145,7 +148,7 @@
         <uc:ColorPanelUserControl 
             Height="200"
             VerticalAlignment="Bottom"
-          Width="330" />
+          MaxWidth="550" />
 
     </Grid>
 </Window>

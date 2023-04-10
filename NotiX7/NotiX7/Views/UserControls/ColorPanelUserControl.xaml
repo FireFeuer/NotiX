@@ -14,7 +14,7 @@
             BorderBrush="#70172736">
         
         <Grid Height="200"
-          Width="330">
+          Width="550">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3.3*"/>
                 <ColumnDefinition Width="1.4*"/>
@@ -24,7 +24,7 @@
                
 
                 <Grid Grid.Column="0"
-                      Width="227">
+                      Width="380">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="40"/>
                         <RowDefinition Height="*"/>
@@ -58,6 +58,12 @@
                                                  StrokeThickness="3"
                                                  Width="40"
                                                  Height="40"/>
+
+                                        <TextBlock Text="{Binding Text}"
+                                                   VerticalAlignment="Center"
+                                                   Grid.Column="1"
+                                                   Margin="10,0,0,0"
+                                                   Foreground="White"/>
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -88,7 +94,6 @@
                            TextAlignment="Center"
                            Foreground="White"
                            Text="Размеры"/>
-
             </Grid>
         </Grid>
     </Border>
