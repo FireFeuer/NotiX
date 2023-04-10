@@ -1,22 +1,19 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using NotiX7.Data;
 using NotiX7.Data.DbEntities;
 using NotiX7.Models;
 using NotiX7.Services;
-using NotiX7.Views.UserControls;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using Microsoft.EntityFrameworkCore.Sqlite;
-using Microsoft.EntityFrameworkCore;
 
 namespace NotiX7.ViewModels
 {
     public partial class WindowViewModel : ObservableObject
     {
-        private readonly NoteService _noteSevice;
+        private readonly NoteService _noteService;
+        private readonly ColorService _colorService;
 
         bool post_note = false; // Если значение True то заметку можно разместить
         bool _isSelecting = false; // Возможность перемещения заметки
@@ -33,17 +30,20 @@ namespace NotiX7.ViewModels
         [ObservableProperty]
         private string _s = "S";
 
+        [ObservableProperty]
+        private ObservableCollection<ColorsCategory> _colors;
 
-        public WindowViewModel(NoteService noteService)
+
+        public WindowViewModel(NoteService noteService, ColorService colorService)
         {
-            _noteSevice = noteService;
+            _noteService = noteService;
+            _colorService = colorService;
+
 
             Items = new ObservableCollection<Note>();
+            Items = _noteService.LoadNotesFromDb();
 
-
-            Items = _noteSevice.LoadNotesFromDb();
-           
-
+            Colors = _colorService.LoadNotAllColorsFromDb();
         }
 
 
@@ -53,27 +53,20 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private async void DropNote()
         {
-       
-            NoteService noteService = new NoteService();
-            await noteService.ChangeUploadingNotesToTheDb(SelectedNote);       
+            await _noteService.ChangeUploadingNotesToTheDb(SelectedNote);
             SelectedNote = null;
-          
+
             foreach (Note note in Items)
             {
                 note.IsSelected = false;
-              
-
             }
-           
             _isSelecting = false;
-
-            
         }
+
 
         [RelayCommand]
         private void AddNote()
         {
-         
             post_note = true;
         }
 
@@ -85,7 +78,7 @@ namespace NotiX7.ViewModels
             if (post_note)
             {
                 Note note = new Note
-                {         
+                {
                     Id = Items.Count + 1,
                     X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
@@ -94,13 +87,13 @@ namespace NotiX7.ViewModels
                     Title = "",
                     Text = "",
                     FirstDate = "",
-                    SecondDate = ""                   
+                    SecondDate = ""
                 };
                 Items.Add(note);
                 post_note = false;
 
-                NoteService noteService = new NoteService();
-                await noteService.AddUploadingNotesToTheDb(note);
+
+                await _noteService.AddUploadingNotesToTheDb(note);
             }
         }
 

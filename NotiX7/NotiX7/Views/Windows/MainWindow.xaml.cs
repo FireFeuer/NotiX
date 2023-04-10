@@ -1,19 +1,10 @@
 ﻿using NotiX7.Views.UserControls;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace NotiX7
 {
@@ -42,6 +33,7 @@ namespace NotiX7
 
         private void Board_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            #region Устаревшее передвижение
             if (post_note)
             {
                 // Заметка
@@ -165,6 +157,7 @@ namespace NotiX7
 
                 post_note = false;
             }
+            #endregion
         }
 
         private void TakeNote(object sender, MouseButtonEventArgs e)
@@ -271,7 +264,15 @@ namespace NotiX7
 
             Canvas.SetTop(note, 300);
             Canvas.SetLeft(note, 500);
-            
+
+        }
+
+        private void NOte_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            int count = itemsControl.Items.Count;
+
+            NOte? note = sender as NOte;
+            Panel.SetZIndex(note, 100);
         }
     }
 }

@@ -1,7 +1,5 @@
-﻿using System.Diagnostics;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace NotiX7.Views.UserControls
 {
@@ -15,12 +13,12 @@ namespace NotiX7.Views.UserControls
             InitializeComponent();
         }
 
-        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(nameof(Title),typeof(string),typeof(TextBlock)); 
+        public static readonly DependencyProperty TitleProperty = DependencyProperty.Register(nameof(Title), typeof(string), typeof(TextBlock));
         public string Title
         {
             get { return (string)GetValue(TitleProperty); }
             set { SetValue(TitleProperty, value); }
         }
-       
+
     }
 }

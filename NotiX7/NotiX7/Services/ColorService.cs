@@ -1,11 +1,8 @@
 ﻿using NotiX7.Data;
 using NotiX7.Data.DbEntities;
-using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NotiX7.Services
 {
@@ -23,9 +20,9 @@ namespace NotiX7.Services
                 {
                     ColorsCategory addedColors = new ColorsCategory
                     {
-                      Id = color.Id,
-                      Text = color.Text,
-                      Hex = color.Hex
+                        Id = color.Id,
+                        Text = color.Text,
+                        Hex = color.Hex
                     };
                     colors.Add(addedColors);
                 }
@@ -37,22 +34,14 @@ namespace NotiX7.Services
             ObservableCollection<ColorsCategory> colors = new ObservableCollection<ColorsCategory>();
             using (NotixDbContext db = new NotixDbContext())
             {
+                List<ColorsCategory> colorsDB;
+                colorsDB = db.ColorsCategories.Where(c => c.Text != "").ToList();
 
-                Microsoft.EntityFrameworkCore.DbSet<ColorsCategory> colorsDB;
-                colorsDB = db.ColorsCategories;
                 foreach (ColorsCategory color in colorsDB)
                 {
-                    ColorsCategory addedColors = new ColorsCategory
-                    {
-                        Id = color.Id,
-                        Text = color.Text,
-                        Hex = color.Hex
-                    };
-                    if(color.Text != "")
-                    {
-                        colors.Add(addedColors);
-                    }                    
+                    colors.Add(color);
                 }
+
                 return colors;
             }
         }
