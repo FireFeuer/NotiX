@@ -13,6 +13,7 @@ namespace NotiX7
             ServiceCollection services = new ServiceCollection();
 
             services.AddTransient<NoteService>();
+            services.AddTransient<ColorService>();
 
             services.AddTransient<WindowViewModel>();
 
