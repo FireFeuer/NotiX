@@ -6,6 +6,7 @@
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:NotiX7.Views.UserControls"
              mc:Ignorable="d"
+            MouseLeftButtonDown="border_PreviewMouseDown"
              xmlns:converters="clr-namespace:NotiX7.Assets.Converters"
              x:Name="NoteUserControl">
 
@@ -16,14 +17,11 @@
     </UserControl.Resources>
 
     <Border x:Name="border" Width="340" 
-           
             CornerRadius="6 6 6 6" 
             Background="{Binding ColorNavigation.Hex, Converter={converters:StringToBrushConverter}}"
             Height="auto"
             BorderThickness="6"
             BorderBrush="{Binding ColorNavigation.Hex, Converter={converters:BackgroundToBotderBrushConverter}}">
-
-
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>

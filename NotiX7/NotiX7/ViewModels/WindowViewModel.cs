@@ -6,6 +6,8 @@ using NotiX7.Services;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
+using System.Windows.Automation.Provider;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NotiX7.ViewModels
@@ -23,6 +25,7 @@ namespace NotiX7.ViewModels
 
         [ObservableProperty]
         private Note _selectedNote;
+
 
         [ObservableProperty]
         private ObservableCollection<Note> _items = new ObservableCollection<Note>();
@@ -68,6 +71,7 @@ namespace NotiX7.ViewModels
         private void AddNote()
         {
             post_note = true;
+            
         }
 
 
@@ -82,17 +86,17 @@ namespace NotiX7.ViewModels
                     Id = Items.Count + 1,
                     X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
-                    ColorNavigation = new ColorsCategory { Hex = "#A86540" },
-                    Color = 1,
+                    ColorNavigation = new ColorsCategory { Id = 11, Hex = "#8B8940" },
                     Title = "",
                     Text = "",
                     FirstDate = "",
-                    SecondDate = ""
+                    SecondDate = "",
+                    Z = InformationTransportation.MaxZ + 1,
+                    
                 };
+                InformationTransportation.MaxZ = note.Z;
                 Items.Add(note);
                 post_note = false;
-
-
                 await _noteService.AddUploadingNotesToTheDb(note);
             }
         }
@@ -140,6 +144,7 @@ namespace NotiX7.ViewModels
                 //Debug.WriteLine((int)_offsetPoint.Y);
                 SelectedNote.Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - (int)_offsetPoint.Y;
                 SelectedNote.X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - (int)_offsetPoint.X;
+                
             }
         }
 

@@ -269,10 +269,7 @@ namespace NotiX7
 
         private void NOte_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            int count = itemsControl.Items.Count;
-
-            NOte? note = sender as NOte;
-            Panel.SetZIndex(note, 100);
+            Debug.WriteLine(Canvas.GetZIndex(sender as NOte));
         }
     }
 }
