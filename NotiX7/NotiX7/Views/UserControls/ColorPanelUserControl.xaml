@@ -13,8 +13,8 @@
             CornerRadius="6"
             BorderBrush="#70172736">
         
-        <Grid Height="200"
-          Width="550">
+        <Grid MaxHeight="300"
+          MaxWidth="550">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3.3*"/>
                 <ColumnDefinition Width="1.4*"/>

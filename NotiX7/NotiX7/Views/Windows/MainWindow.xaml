@@ -28,11 +28,11 @@
 
         </Grid.RowDefinitions>
 
-      
+
         <Canvas x:Name="Board" Grid.Row="0" Background="Transparent">
 
             <i:Interaction.Triggers>
-               
+
                 <i:EventTrigger EventName="KeyUp">
                     <i:InvokeCommandAction
                             Command="{Binding KeyUpCommand}" />
@@ -63,18 +63,18 @@
 
                 <ItemsControl.ItemContainerStyle>
                     <Style>
-                        
+
                         <Setter Property="Canvas.Left" Value="{Binding X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Setter Property="Canvas.Top" Value="{Binding Y,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Setter Property="Canvas.ZIndex" Value="{Binding Z, UpdateSourceTrigger=PropertyChanged}"/>
-                        
+
                     </Style>
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <uc:NOte PreviewMouseDown="NOte_MouseDown">
                             <i:Interaction.Triggers>
-                               
+
                                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                                     <i:InvokeCommandAction
                             Command="{Binding SelectingCommand}" />
@@ -151,9 +151,9 @@
         </Border>
 
         <uc:ColorPanelUserControl 
-            Height="200"
+            MaxHeight="300"
             VerticalAlignment="Bottom"
-          MaxWidth="550" />
+          MaxWidth="550" Margin="150,292,150,0"  />
 
     </Grid>
 </Window>
