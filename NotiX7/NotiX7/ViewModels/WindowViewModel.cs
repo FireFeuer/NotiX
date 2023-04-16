@@ -57,7 +57,7 @@ namespace NotiX7.ViewModels
         private async void DropNote()
         {
             await _noteService.ChangeUploadingNotesToTheDb(SelectedNote);
-            SelectedNote = null;
+           
 
             foreach (Note note in Items)
             {
@@ -79,6 +79,10 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private async void BoardMouseDown()
         {
+            if (!post_note)
+            {
+                GetSelectedNote();
+            }
             if (post_note)
             {
                 Note note = new Note
@@ -151,6 +155,16 @@ namespace NotiX7.ViewModels
         private void GetSelectedNote()
         {
             SelectedNote = Items.Where(i => i.IsSelected).SingleOrDefault();
+        }
+
+        [RelayCommand]
+        private async void KeyUp()
+        {
+            if(SelectedNote != null)
+            {
+                NoteService noteService = new NoteService();
+                await noteService.ChangeUploadingNotesToTheDb(SelectedNote);                
+            }
         }
     }
 }

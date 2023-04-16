@@ -32,6 +32,11 @@
         <Canvas x:Name="Board" Grid.Row="0" Background="Transparent">
 
             <i:Interaction.Triggers>
+               
+                <i:EventTrigger EventName="KeyUp">
+                    <i:InvokeCommandAction
+                            Command="{Binding KeyUpCommand}" />
+                </i:EventTrigger>
                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                     <i:InvokeCommandAction
                             Command="{Binding BoardMouseDownCommand}" />
@@ -68,8 +73,8 @@
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <uc:NOte PreviewMouseDown="NOte_MouseDown">
-
                             <i:Interaction.Triggers>
+                               
                                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                                     <i:InvokeCommandAction
                             Command="{Binding SelectingCommand}" />
