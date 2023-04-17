@@ -255,17 +255,20 @@
                                      Grid.Row="0"
                                      Width="50"
                                      Height="50"
-                                     Content="Большой"/>
+                                     Content="Большой"
+                                     Command="{Binding SelectSize3Command}"/>
                         <RadioButton Style="{StaticResource SizeButtonStyle}"
                                      Grid.Row="1"
                                      Width="50"
                                      Height="50"
-                                     Content="Средний"/>
+                                     Content="Средний"
+                                     Command="{Binding SelectSize2Command}"/>
                         <RadioButton Style="{StaticResource SizeButtonStyle}"
                                      Grid.Row="2"
                                      Width="50"
                                      Height="50"
-                                      Content="Маленький"/>
+                                      Content="Маленький"
+                                     Command="{Binding SelectSize1Command}"/>
                     </Grid>
                 </Grid>
             </Grid>

@@ -41,7 +41,7 @@ namespace NotiX7.ViewModels
         private Visibility createButtonMenuVisiblity = Visibility.Collapsed;
 
         [ObservableProperty]
-        private int _selectedNoteSize = 150;
+        private int? _selectedNoteSize = null;
 
         public WindowViewModel(NoteService noteService, ColorService colorService)
         {
@@ -101,7 +101,7 @@ namespace NotiX7.ViewModels
             {
                 GetSelectedNote();
             }
-            if (post_note && SelectedColor != null)
+            if (post_note && SelectedColor != null && SelectedNoteSize != null)
             {
                 Note note = new Note
                 {
@@ -114,7 +114,7 @@ namespace NotiX7.ViewModels
                     FirstDate = "",
                     SecondDate = "",
                     Z = InformationTransportation.MaxZ + 1,
-                    Size = 340
+                    Size = (int)SelectedNoteSize
 
                 };
                 InformationTransportation.MaxZ = note.Z;
@@ -122,6 +122,8 @@ namespace NotiX7.ViewModels
                 post_note = false;
                 await _noteService.AddUploadingNotesToTheDb(note);
                 CreateButtonMenuVisiblity = Visibility.Collapsed;
+                SelectedNoteSize = null;
+                SelectedColor = null;
             }
         }
 
@@ -130,18 +132,18 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private void SelectSize1()
         {
-            SelectedNoteSize = 150;
+            SelectedNoteSize = 170;
         }
         [RelayCommand]
         private void SelectSize2()
         {
 
-            SelectedNoteSize = 200;
+            SelectedNoteSize = 235;
         }
         [RelayCommand]
         private void SelectSize3()
         {
-            SelectedNoteSize = 250;
+            SelectedNoteSize = 320;
         }
 
         //Движение заметки внутри Canvas 
