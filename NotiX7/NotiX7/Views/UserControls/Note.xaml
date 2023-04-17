@@ -9,8 +9,8 @@
             MouseLeftButtonDown="border_PreviewMouseDown"
              xmlns:converters="clr-namespace:NotiX7.Assets.Converters"
              x:Name="NoteUserControl">
-    
-    
+
+
 
     <UserControl.Resources>
         <Style TargetType="{x:Type materialDesign:SmartHint}">
@@ -18,7 +18,7 @@
         </Style>
     </UserControl.Resources>
 
-    <Border x:Name="border" Width="340" 
+    <Border x:Name="border" Width="{Binding Size, Converter={converters:NoteHeightToWidthConverter}}" 
             CornerRadius="6 6 6 6" 
             Background="{Binding ColorNavigation.Hex, Converter={converters:StringToBrushConverter}}"
             Height="auto"
@@ -56,10 +56,12 @@
                 </TextBox>
 
                 <StackPanel Margin="10"
-                                Grid.Row="1">
+                                Grid.Row="1"
+                            x:Name="contentStackPanel">
                     <TextBox x:Name="ContentTextBox"
                              TextWrapping="Wrap"
                              FontSize="16"
+                             Height="240"
                              Text="{Binding Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                              BorderThickness="0"
                              Background="Transparent"
@@ -72,7 +74,7 @@
 
                     <StackPanel.Style>
                         <Style TargetType="{x:Type StackPanel}">
-                            <Setter Property="Height" Value="240"/>
+                            <Setter Property="Height" Value="{Binding Size}"/>
                             <Style.Triggers>
                                 <DataTrigger Binding="{Binding ElementName=expandCheckBox, Path=IsChecked}" Value="True">
                                     <DataTrigger.EnterActions>
@@ -127,13 +129,15 @@
                                     Margin="5,0"
                                     materialDesign:HintAssist.Hint="Дата конца"/>
                 </StackPanel>
+
                 <CheckBox 
                       x:Name="expandCheckBox"
                       Height="30"
                       Width="36"
                     Margin="50 0 0 0"
                     HorizontalAlignment="Right"
-                      Foreground="Transparent"/>
+                      Foreground="Transparent"
+                    Checked="expandCheckBox_Checked"/>
             </StackPanel>
 
         </Grid>

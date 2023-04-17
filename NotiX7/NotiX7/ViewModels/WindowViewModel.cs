@@ -5,10 +5,7 @@ using NotiX7.Models;
 using NotiX7.Services;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.Serialization.Formatters;
 using System.Windows;
-using System.Windows.Automation.Provider;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace NotiX7.ViewModels
@@ -22,7 +19,7 @@ namespace NotiX7.ViewModels
         bool _isSelecting = false; // Возможность перемещения заметки
         Point _cursorPosition;
         Point _offsetPoint = new Point(0, 0);
-        int size_note = 150;
+
 
         [ObservableProperty]
         private Note _selectedNote;
@@ -43,6 +40,8 @@ namespace NotiX7.ViewModels
         [ObservableProperty]
         private Visibility createButtonMenuVisiblity = Visibility.Collapsed;
 
+        [ObservableProperty]
+        private int _selectedNoteSize = 150;
 
         public WindowViewModel(NoteService noteService, ColorService colorService)
         {
@@ -64,7 +63,7 @@ namespace NotiX7.ViewModels
         private async void DropNote()
         {
             await _noteService.ChangeUploadingNotesToTheDb(SelectedNote);
-           
+
 
             foreach (Note note in Items)
             {
@@ -77,20 +76,20 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private void AddNote()
         {
-            if(post_note == false)
+            if (post_note == false)
             {
                 post_note = true;
                 CreateButtonMenuVisiblity = Visibility.Visible;
                 return;
             }
-            else if(post_note == true) 
+            else if (post_note == true)
             {
                 post_note = false;
                 CreateButtonMenuVisiblity = Visibility.Collapsed;
                 return;
             }
 
-            
+
         }
 
 
@@ -115,7 +114,8 @@ namespace NotiX7.ViewModels
                     FirstDate = "",
                     SecondDate = "",
                     Z = InformationTransportation.MaxZ + 1,
-                    
+                    Size = 340
+
                 };
                 InformationTransportation.MaxZ = note.Z;
                 Items.Add(note);
@@ -130,18 +130,18 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private void SelectSize1()
         {
-            size_note = 150;
+            SelectedNoteSize = 150;
         }
         [RelayCommand]
         private void SelectSize2()
         {
-            MessageBox.Show(size_note.ToString());
-            size_note = 200;
+
+            SelectedNoteSize = 200;
         }
         [RelayCommand]
         private void SelectSize3()
         {
-            size_note = 250;
+            SelectedNoteSize = 250;
         }
 
         //Движение заметки внутри Canvas 
@@ -168,7 +168,7 @@ namespace NotiX7.ViewModels
                 //Debug.WriteLine((int)_offsetPoint.Y);
                 SelectedNote.Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - (int)_offsetPoint.Y;
                 SelectedNote.X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - (int)_offsetPoint.X;
-                
+
             }
         }
 
@@ -180,10 +180,10 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private async void KeyUp()
         {
-            if(SelectedNote != null)
+            if (SelectedNote != null)
             {
                 NoteService noteService = new NoteService();
-                await noteService.ChangeUploadingNotesToTheDb(SelectedNote);                
+                await noteService.ChangeUploadingNotesToTheDb(SelectedNote);
             }
         }
     }

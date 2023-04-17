@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FHhExW2pVTJQszBvaGS33sEe0r0lnm7cmtk8dGttBCTMjHzQ+xNZExUi7eWpnw8jRDO0Zq9ouvHOW15Zz7n3xg==",
+  "dgSpecHash": "y9umD4G01GZ1O4wMt8sbkt/EQcnhA0OjUOWaAWuv9RYfLiFpN/9ptb3XUlHnByHc3NYbPxie4PleblOO9+wmEA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\pavlo\\source\\repos\\FireFeuer\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+  "projectFilePath": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pavlo\\.nuget\\packages\\communitytoolkit.mvvm\\8.1.0\\communitytoolkit.mvvm.8.1.0.nupkg.sha512",
     "C:\\Users\\pavlo\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

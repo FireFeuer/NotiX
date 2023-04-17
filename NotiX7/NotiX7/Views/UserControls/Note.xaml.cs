@@ -22,8 +22,24 @@ namespace NotiX7.Views.UserControls
 
         private void border_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-           
-         
+
+
+        }
+
+        private void expandCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            //CheckBox checkBox = sender as CheckBox;
+
+            //int oldSize = (int)contentStackPanel.Height;
+
+            //if (checkBox.IsChecked == true)
+            //{
+            //    contentStackPanel.Height = 0;
+            //}
+            //if (checkBox.IsChecked == false)
+            //{
+            //    contentStackPanel.Height = oldSize;
+            //}
         }
     }
 }
