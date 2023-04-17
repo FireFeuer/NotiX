@@ -5,6 +5,7 @@ using NotiX7.Models;
 using NotiX7.Services;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
 using System.Windows;
 using System.Windows.Automation.Provider;
 using System.Windows.Controls;
@@ -35,6 +36,12 @@ namespace NotiX7.ViewModels
 
         [ObservableProperty]
         private ObservableCollection<ColorsCategory> _colors;
+
+        [ObservableProperty]
+        private ColorsCategory _selectedColor;
+
+        [ObservableProperty]
+        private Visibility createButtonMenuVisiblity = Visibility.Collapsed;
 
 
         public WindowViewModel(NoteService noteService, ColorService colorService)
@@ -70,7 +77,19 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private void AddNote()
         {
-            post_note = true;
+            if(post_note == false)
+            {
+                post_note = true;
+                CreateButtonMenuVisiblity = Visibility.Visible;
+                return;
+            }
+            else if(post_note == true) 
+            {
+                post_note = false;
+                CreateButtonMenuVisiblity = Visibility.Collapsed;
+                return;
+            }
+
             
         }
 
@@ -83,14 +102,14 @@ namespace NotiX7.ViewModels
             {
                 GetSelectedNote();
             }
-            if (post_note)
+            if (post_note && SelectedColor != null)
             {
                 Note note = new Note
                 {
                     Id = Items.Count + 1,
                     X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
-                    ColorNavigation = new ColorsCategory { Id = 11, Hex = "#8B8940" },
+                    ColorNavigation = SelectedColor,
                     Title = "",
                     Text = "",
                     FirstDate = "",
@@ -102,6 +121,7 @@ namespace NotiX7.ViewModels
                 Items.Add(note);
                 post_note = false;
                 await _noteService.AddUploadingNotesToTheDb(note);
+                CreateButtonMenuVisiblity = Visibility.Collapsed;
             }
         }
 

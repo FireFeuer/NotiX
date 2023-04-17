@@ -1496,11 +1496,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+      "projectUniqueName": "C:\\Users\\pavlo\\Source\\Repos\\FireFeuer\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
       "projectName": "NotiX7",
-      "projectPath": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+      "projectPath": "C:\\Users\\pavlo\\Source\\Repos\\FireFeuer\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
       "packagesPath": "C:\\Users\\pavlo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\pavlo\\source\\repos\\NotiX\\NotiX7\\NotiX7\\obj\\",
+      "outputPath": "C:\\Users\\pavlo\\Source\\Repos\\FireFeuer\\NotiX\\NotiX7\\NotiX7\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\pavlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -1579,7 +1579,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.200\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -9,6 +9,8 @@
             MouseLeftButtonDown="border_PreviewMouseDown"
              xmlns:converters="clr-namespace:NotiX7.Assets.Converters"
              x:Name="NoteUserControl">
+    
+    
 
     <UserControl.Resources>
         <Style TargetType="{x:Type materialDesign:SmartHint}">
@@ -22,6 +24,12 @@
             Height="auto"
             BorderThickness="6"
             BorderBrush="{Binding ColorNavigation.Hex, Converter={converters:BackgroundToBotderBrushConverter}}">
+
+        <Border.Effect>
+            <DropShadowEffect ShadowDepth="3"
+                              BlurRadius="0"
+                              Color="#4C909090"/>
+        </Border.Effect>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
