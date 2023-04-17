@@ -271,5 +271,12 @@ namespace NotiX7
         {
             Debug.WriteLine(Canvas.GetZIndex(sender as NOte));
         }
+
+        private void scrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            ScrollViewer scv = (ScrollViewer)sender;
+            scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta / 4);
+            e.Handled = true;
+        }
     }
 }

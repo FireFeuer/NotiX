@@ -28,11 +28,11 @@
 
         </Grid.RowDefinitions>
 
-      
+
         <Canvas x:Name="Board" Grid.Row="0" Background="Transparent">
 
             <i:Interaction.Triggers>
-               
+
                 <i:EventTrigger EventName="KeyUp">
                     <i:InvokeCommandAction
                             Command="{Binding KeyUpCommand}" />
@@ -63,18 +63,18 @@
 
                 <ItemsControl.ItemContainerStyle>
                     <Style>
-                        
+
                         <Setter Property="Canvas.Left" Value="{Binding X, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Setter Property="Canvas.Top" Value="{Binding Y,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         <Setter Property="Canvas.ZIndex" Value="{Binding Z, UpdateSourceTrigger=PropertyChanged}"/>
-                        
+
                     </Style>
                 </ItemsControl.ItemContainerStyle>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <uc:NOte PreviewMouseDown="NOte_MouseDown">
                             <i:Interaction.Triggers>
-                               
+
                                 <i:EventTrigger EventName="PreviewMouseLeftButtonDown">
                                     <i:InvokeCommandAction
                             Command="{Binding SelectingCommand}" />
@@ -150,10 +150,129 @@
             </StackPanel>
         </Border>
 
-        <uc:ColorPanelUserControl 
-            Height="200"
-            VerticalAlignment="Bottom"
-          MaxWidth="550" />
+        <Border Background="#172736"
+            BorderThickness="4"
+            CornerRadius="6"
+            BorderBrush="#70172736"
+            VerticalAlignment="Bottom" 
+            Margin="150,292,150,0"
+                MaxWidth="550"
+                MaxHeight="300"
+            Visibility="{Binding CreateButtonMenuVisiblity}">
+
+            <Grid MaxHeight="300"
+          MaxWidth="550">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3.3*"/>
+                    <ColumnDefinition Width="1.4*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Orientation="Horizontal">
+
+
+                    <Grid Grid.Column="0"
+                      Width="380">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0"
+                           FontSize="17"
+                           TextAlignment="Center"
+                           Foreground="White"
+                           Text="Категории"/>
+                        <ScrollViewer Grid.Row="1"
+                              Grid.Column="0"
+                              x:Name="scrollViewer"
+                              VerticalScrollBarVisibility="Visible"
+                              PreviewMouseWheel="scrollViewer_PreviewMouseWheel"
+                                      >
+
+                            <ListView ItemsSource="{Binding 
+                            Colors}"
+                                      SelectedItem="{Binding SelectedColor}"
+                                  Margin="0 0 0 30">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid Background="Transparent">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*"/>
+                                                <ColumnDefinition Width="5*"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <Ellipse Grid.Column="0"
+                                                 Fill="{Binding Hex, Converter= {converters:StringToBrushConverter}}"
+                                                 Stroke="{Binding Hex, Converter={converters:BackgroundToBotderBrushConverter}}"
+                                                 StrokeThickness="3"
+                                                 Width="40"
+                                                 Height="40"/>
+
+                                            <TextBlock Text="{Binding Text}"
+                                                   VerticalAlignment="Center"
+                                                   Grid.Column="1"
+                                                   Margin="10,0,0,0"
+                                                   Foreground="White"/>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+
+
+                        </ScrollViewer>
+
+                    </Grid>
+
+                    <Border HorizontalAlignment="Right"
+                    Width="4"
+                    Height="auto"
+                    Background="White"
+                    CornerRadius="2"/>
+                </StackPanel>
+
+
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Grid.Row="0"
+                           FontSize="17"
+                           TextAlignment="Center"
+                           Foreground="White"
+                           Text="Размеры"/>
+
+                    <Grid Grid.Row="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <RadioButton Style="{StaticResource SizeButtonStyle}"
+                                     Grid.Row="0"
+                                     Width="50"
+                                     Height="50"
+                                     Content="Большой"
+                                     Command="{Binding SelectSize3Command}"/>
+                        <RadioButton Style="{StaticResource SizeButtonStyle}"
+                                     Grid.Row="1"
+                                     Width="50"
+                                     Height="50"
+                                     Content="Средний"
+                                     Command="{Binding SelectSize2Command}"/>
+                        <RadioButton Style="{StaticResource SizeButtonStyle}"
+                                     Grid.Row="2"
+                                     Width="50"
+                                     Height="50"
+                                      Content="Маленький"
+                                     Command="{Binding SelectSize1Command}"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Border>
 
     </Grid>
 </Window>

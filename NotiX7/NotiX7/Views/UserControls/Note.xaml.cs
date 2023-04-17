@@ -1,5 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 
 namespace NotiX7.Views.UserControls
 {
@@ -22,8 +24,36 @@ namespace NotiX7.Views.UserControls
 
         private void border_PreviewMouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-           
-         
+
+
+        }
+
+        private void expandCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+
+
+            DoubleAnimation heightAnimation = new DoubleAnimation();
+            heightAnimation.Duration = TimeSpan.FromMilliseconds(170);
+
+            if (contentStackPanel.Height == 0)
+            {
+                heightAnimation.From = 0;
+                heightAnimation.To = border.Width - 100;
+                contentStackPanel.BeginAnimation(StackPanel.HeightProperty, heightAnimation);
+                return;
+            }
+            if (contentStackPanel.Height > 0)
+            {
+                heightAnimation.From = contentStackPanel.Height;
+                heightAnimation.To = 0;
+                contentStackPanel.BeginAnimation(StackPanel.HeightProperty, heightAnimation);
+                return;
+            }
+
+
+
+
         }
     }
 }
