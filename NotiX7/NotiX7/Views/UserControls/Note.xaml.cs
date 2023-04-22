@@ -55,5 +55,10 @@ namespace NotiX7.Views.UserControls
 
 
         }
+
+        private void NoteUserControl_PreviewMouseRightButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            this.ContextMenu.IsOpen = true;
+        }
     }
 }

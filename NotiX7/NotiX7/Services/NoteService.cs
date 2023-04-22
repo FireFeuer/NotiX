@@ -1,4 +1,5 @@
-﻿using NotiX7.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using NotiX7.Data;
 using NotiX7.Data.DbEntities;
 using NotiX7.Models;
 using System.Collections.ObjectModel;
@@ -42,7 +43,7 @@ namespace NotiX7.Services
         {
             using (NotixDbContext db = new NotixDbContext())
             {
-                Microsoft.EntityFrameworkCore.DbSet<NoteDB> notesDB;
+                DbSet<NoteDB> notesDB;
                 notesDB = db.Notes;
                 notesDB.Add(new NoteDB
                 {
@@ -56,7 +57,7 @@ namespace NotiX7.Services
                     Y = note.Y,
                     Is_open = note.Is_open,
                 });
-                db.SaveChanges();
+                await db.SaveChangesAsync();
             }
         }
         public async Task ChangeUploadingNotesToTheDb(Note note)

@@ -8,7 +8,8 @@
              mc:Ignorable="d"
             MouseLeftButtonDown="border_PreviewMouseDown"
              xmlns:converters="clr-namespace:NotiX7.Assets.Converters"
-             x:Name="NoteUserControl">
+             x:Name="NoteUserControl"
+             PreviewMouseRightButtonDown="NoteUserControl_PreviewMouseRightButtonDown">
 
 
 
@@ -17,6 +18,12 @@
             <Setter Property="HorizontalAlignment" Value="Center"/>
         </Style>
     </UserControl.Resources>
+
+    <UserControl.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Удалить"/>
+        </ContextMenu>
+    </UserControl.ContextMenu>
 
     <Border x:Name="border" Width="{Binding Size, Converter={converters:NoteHeightToWidthConverter}}" 
             CornerRadius="6 6 6 6" 

@@ -278,5 +278,18 @@ namespace NotiX7
             scv.ScrollToVerticalOffset(scv.VerticalOffset - e.Delta / 4);
             e.Handled = true;
         }
+
+        private void Note_placement_button_Click_1(object sender, RoutedEventArgs e)
+        {
+            if (createNoteMenu.Visibility == Visibility.Visible)
+            {
+                createNoteMenu.Visibility = Visibility.Collapsed;
+                return;
+            }
+            else
+            {
+                createNoteMenu.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

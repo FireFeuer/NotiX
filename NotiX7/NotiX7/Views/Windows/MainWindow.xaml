@@ -99,6 +99,7 @@
                 MaxWidth="550">
             <StackPanel HorizontalAlignment="Center" 
                     VerticalAlignment="Center"
+                        Orientation="Horizontal"
                     Grid.Row="1">
                 <Button Width="{Binding ActualHeight, ElementName=border, Mode=OneWay}"
                         Height="{Binding ActualHeight, ElementName=border, Mode=OneWay}" 
@@ -106,7 +107,7 @@
                         x:Name="Note_placement_button" 
                         Command="{Binding AddNoteCommand}"
                         BorderThickness="0"
-                        Margin="6"
+                        Margin="3"
                         BorderBrush="White">
 
                     <Button.Resources>
@@ -147,10 +148,13 @@
                     </Button.ContextMenu>
                 </Button>
 
+                <Button Content="Сортировка"
+                        Command="{Binding FilterNotesCommand}"/>
             </StackPanel>
         </Border>
-
+      
         <Border Background="#172736"
+                x:Name="createNoteMenu"
             BorderThickness="4"
             CornerRadius="6"
             BorderBrush="#70172736"
@@ -274,5 +278,77 @@
             </Grid>
         </Border>
 
+
+        <Border Background="#172736"
+                x:Name="sortNotesMenu"
+            BorderThickness="4"
+            CornerRadius="6"
+            BorderBrush="#70172736"
+            VerticalAlignment="Bottom" 
+            Margin="150,292,150,0"
+                MaxWidth="550"
+                MaxHeight="300"
+            Visibility="{Binding FilterNotesMenuVisiblity}">
+
+            <Grid MaxHeight="300"
+          MaxWidth="550">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0"
+                           FontSize="17"
+                           TextAlignment="Center"
+                           Foreground="White"
+                           Text="Выбеерите категорию для фильтрации заметок"/>
+
+                <ScrollViewer Grid.Row="1"
+                              Grid.Column="0"
+                              VerticalScrollBarVisibility="Visible"
+                              PreviewMouseWheel="scrollViewer_PreviewMouseWheel"
+                                      >
+                    <StackPanel Orientation="Vertical">
+                        <ListView Grid.Row="1"
+                    ItemsSource="{Binding AddedColors}"
+                                      SelectedItem="{Binding SelectedFilterColor}"
+                                  Margin="0 0 0 30">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Background="Transparent">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                        </Grid.ColumnDefinitions>
+
+                                        <Ellipse Grid.Column="0"
+                                                 Fill="{Binding Hex, Converter= {converters:StringToBrushConverter}}"
+                                                 Stroke="{Binding Hex, Converter={converters:BackgroundToBotderBrushConverter}}"
+                                                 StrokeThickness="3"
+                                                 Width="40"
+                                                 Height="40"/>
+
+                                        <TextBlock Text="{Binding Text}"
+                                                   VerticalAlignment="Center"
+                                                   Grid.Column="1"
+                                                   Margin="10,0,0,0"
+                                                   Foreground="White"/>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <Button Content="Показать все заметки"
+                                Background="Transparent"
+                                Foreground="White"
+                                BorderBrush="Transparent"
+                                Margin="0 0 0 20"
+                                FontSize="17"
+                                Command="{Binding ClearFilterColorCommand}"/>
+                    </StackPanel>
+                   
+                </ScrollViewer>
+            </Grid>
+        </Border>
     </Grid>
 </Window>

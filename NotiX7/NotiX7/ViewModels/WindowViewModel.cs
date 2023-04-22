@@ -3,7 +3,9 @@ using CommunityToolkit.Mvvm.Input;
 using NotiX7.Data.DbEntities;
 using NotiX7.Models;
 using NotiX7.Services;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -20,6 +22,9 @@ namespace NotiX7.ViewModels
         Point _cursorPosition;
         Point _offsetPoint = new Point(0, 0);
 
+
+
+        #region Свойства
 
         [ObservableProperty]
         private Note _selectedNote;
@@ -41,7 +46,20 @@ namespace NotiX7.ViewModels
         private Visibility createButtonMenuVisiblity = Visibility.Collapsed;
 
         [ObservableProperty]
+        private Visibility _filterNotesMenuVisiblity = Visibility.Collapsed;
+
+        [ObservableProperty]
         private int? _selectedNoteSize = null;
+
+        [ObservableProperty]
+        private ObservableCollection<ColorsCategory> _addedColors = new();
+
+        [ObservableProperty]
+        private ColorsCategory? _selectedFilterColor;
+
+        #endregion
+
+
 
         public WindowViewModel(NoteService noteService, ColorService colorService)
         {
@@ -53,9 +71,25 @@ namespace NotiX7.ViewModels
             Items = _noteService.LoadNotesFromDb();
 
             Colors = _colorService.LoadNotAllColorsFromDb();
+            GetAddedColors();
         }
 
 
+        #region Changed методы
+
+        partial void OnSelectedFilterColorChanged(ColorsCategory? value)
+        {
+            UpdateItems();
+            Debug.WriteLine("ABOBA");
+        }
+
+
+
+        #endregion
+
+
+
+        #region Команды
 
         //Закрепляем заметку
         //Отпускаем заметку, здесь делаем сохранение
@@ -80,6 +114,7 @@ namespace NotiX7.ViewModels
             {
                 post_note = true;
                 CreateButtonMenuVisiblity = Visibility.Visible;
+                FilterNotesMenuVisiblity = Visibility.Collapsed;
                 return;
             }
             else if (post_note == true)
@@ -97,6 +132,8 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private async void BoardMouseDown()
         {
+            CreateButtonMenuVisiblity = Visibility.Collapsed;
+            FilterNotesMenuVisiblity = Visibility.Collapsed;
             if (!post_note)
             {
                 GetSelectedNote();
@@ -124,6 +161,7 @@ namespace NotiX7.ViewModels
                 CreateButtonMenuVisiblity = Visibility.Collapsed;
                 SelectedNoteSize = null;
                 SelectedColor = null;
+                GetAddedColors();
             }
         }
 
@@ -174,11 +212,6 @@ namespace NotiX7.ViewModels
             }
         }
 
-        private void GetSelectedNote()
-        {
-            SelectedNote = Items.Where(i => i.IsSelected).SingleOrDefault();
-        }
-
         [RelayCommand]
         private async void KeyUp()
         {
@@ -187,6 +220,83 @@ namespace NotiX7.ViewModels
                 NoteService noteService = new NoteService();
                 await noteService.ChangeUploadingNotesToTheDb(SelectedNote);
             }
+        }
+
+
+        [RelayCommand]
+        private void ClearFilterColor()
+        {
+            SelectedFilterColor = null;
+        }
+
+
+        [RelayCommand]
+        private void FilterNotes()
+        {
+            FilterNotesMenuVisiblity = Visibility.Visible;
+            CreateButtonMenuVisiblity = Visibility.Collapsed;
+        }
+
+        #endregion
+
+
+
+        private void GetSelectedNote()
+        {
+            SelectedNote = Items.Where(i => i.IsSelected).SingleOrDefault();
+        }
+
+        private void GetAddedColors()
+        {
+            List<int> colorsIds = new List<int>();
+            if (Items != null && Items.Count > 0 && Colors != null)
+            {
+                foreach (var item in Items)
+                {
+                    if (item != null)
+                    {
+                        colorsIds.Add(item.ColorNavigation.Id);
+                    }
+
+                }
+            }
+
+            List<int> uniqueColorsIds = colorsIds.Distinct().ToList();
+
+            AddedColors.Clear();
+            foreach (int item in uniqueColorsIds)
+            {
+                var color = Colors.Where(c => c.Id == item).SingleOrDefault();
+                if (color != null)
+                {
+                    AddedColors.Add(color);
+                }
+            }
+        }
+
+        private void UpdateItems()
+        {
+            ObservableCollection<Note> notes = _noteService.LoadNotesFromDb();
+            List<Note> filtredNotes = new List<Note>();
+
+            if (SelectedFilterColor != null)
+            {
+                filtredNotes = notes.Where(n => n.ColorNavigation.Id == SelectedFilterColor.Id).ToList();
+            }
+            else
+            {
+                Items = _noteService.LoadNotesFromDb();
+                return;
+            }
+
+            notes.Clear();
+
+            foreach (Note note in filtredNotes)
+            {
+                notes.Add(note);
+            }
+
+            Items = notes;
         }
     }
 }
