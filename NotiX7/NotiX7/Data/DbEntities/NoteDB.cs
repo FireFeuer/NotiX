@@ -36,6 +36,8 @@ public partial class NoteDB : ObservableObject
     [ObservableProperty]
     private int is_open;
 
+    [ObservableProperty]
+    private int is_delete;
 
 
     public virtual ColorsCategory ColorNavigation { get; set; } = null!;

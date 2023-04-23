@@ -16,6 +16,8 @@ namespace NotiX7.ViewModels
 {
     public partial class WindowViewModel : ObservableObject
     {
+        private int items_count; // правильно считает id добавленной заметки с учётом всех удалённых заметок за сеанс
+
         private readonly NoteService _noteService;
         private readonly ColorService _colorService;
 
@@ -71,6 +73,7 @@ namespace NotiX7.ViewModels
 
             Items = new ObservableCollection<Note>();
             Items = _noteService.LoadNotesFromDb();
+            items_count = Items.Count;
 
             Colors = _colorService.LoadNotAllColorsFromDb();
             GetAddedColors();
@@ -144,7 +147,7 @@ namespace NotiX7.ViewModels
             {
                 Note note = new Note
                 {
-                    Id = Items.Count + 1,
+                    Id = items_count + 1,
                     X = (int)Mouse.GetPosition(Application.Current.MainWindow).X - 30,
                     Y = (int)Mouse.GetPosition(Application.Current.MainWindow).Y - 10,
                     ColorNavigation = SelectedColor,
@@ -153,8 +156,8 @@ namespace NotiX7.ViewModels
                     FirstDate = "",
                     SecondDate = "",
                     Z = InformationTransportation.MaxZ + 1,
-                    Size = (int)SelectedNoteSize
-
+                    Size = (int)SelectedNoteSize,
+                    Is_delete = 1
                 };
                 InformationTransportation.MaxZ = note.Z;
                 Items.Add(note);
@@ -164,6 +167,7 @@ namespace NotiX7.ViewModels
                 SelectedNoteSize = null;
                 SelectedColor = null;
                 GetAddedColors();
+                items_count++;
             }
         }
 

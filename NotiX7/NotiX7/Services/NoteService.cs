@@ -34,9 +34,14 @@ namespace NotiX7.Services
                         SecondDate = note.SecondDate,
                         ColorNavigation = note.ColorNavigation,
                         Is_open = note.Is_open,
-                        Size = note.Size
+                        Size = note.Size,
+                        Is_delete = note.Is_delete
                     };
-                    notes.Add(addedNote);
+                    if(note.Is_delete == 1)
+                    {
+                        notes.Add(addedNote);
+                    }
+                   
                 }
             }           
             return notes;
@@ -59,6 +64,7 @@ namespace NotiX7.Services
                     X = note.X,
                     Y = note.Y,
                     Is_open = note.Is_open,
+                    Is_delete = 1
                 });
                 await db.SaveChangesAsync();
             }
@@ -82,7 +88,7 @@ namespace NotiX7.Services
                             noteDB.X = note.X;
                             noteDB.Y = note.Y;
                             noteDB.Is_open = note.Is_open;
-
+                         
                         }
                     }
 
@@ -102,8 +108,8 @@ namespace NotiX7.Services
                     {
                         if (note.Id == noteDB.Id)
                         {
-                            db.Notes.Remove(noteDB);
-                           
+                            noteDB.Is_delete = 0;
+                            MessageBox.Show("sd");
                         }
                     }
                    
