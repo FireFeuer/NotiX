@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using NotiX7.Data.DbEntities;
+using NotiX7.Services;
 using System;
 using System.Windows;
 using System.Windows.Controls;
@@ -31,7 +32,7 @@ namespace NotiX7.Models
             
         }
 
-      
+     
 
     }
 }

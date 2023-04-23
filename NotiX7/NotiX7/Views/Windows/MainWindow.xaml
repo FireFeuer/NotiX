@@ -59,6 +59,12 @@
                         <Canvas IsItemsHost="True"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
+                <ItemsControl.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Удалить"
+                      Command="{Binding DeleteNoteCommand}"/>
+                    </ContextMenu>
+                </ItemsControl.ContextMenu>
 
 
                 <ItemsControl.ItemContainerStyle>
@@ -150,6 +156,7 @@
 
                 <Button Content="Сортировка"
                         Command="{Binding FilterNotesCommand}"/>
+             
             </StackPanel>
         </Border>
       

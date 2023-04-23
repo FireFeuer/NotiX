@@ -5,6 +5,9 @@ using NotiX7.Models;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Windows;
+using System.Windows.Input;
 
 namespace NotiX7.Services
 {
@@ -35,7 +38,7 @@ namespace NotiX7.Services
                     };
                     notes.Add(addedNote);
                 }
-            }
+            }           
             return notes;
         }
 
@@ -88,6 +91,26 @@ namespace NotiX7.Services
                 }
             }
 
+        }
+        public async Task DeleteNotesFromTheDb(Note note)
+        {
+            if (note != null)
+            {
+                using(NotixDbContext db = new NotixDbContext())
+                {
+                    foreach (var noteDB in db.Notes)
+                    {
+                        if (note.Id == noteDB.Id)
+                        {
+                            db.Notes.Remove(noteDB);
+                           
+                        }
+                    }
+                   
+                    await db.SaveChangesAsync();
+                }
+            }
+       
         }
     }
 

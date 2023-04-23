@@ -9,6 +9,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using NotiX7.Views;
+using Microsoft.Xaml.Behaviors.Core;
 
 namespace NotiX7.ViewModels
 {
@@ -212,9 +214,12 @@ namespace NotiX7.ViewModels
             }
         }
 
+       
+
         [RelayCommand]
         private async void KeyUp()
         {
+            MessageBox.Show("sad");
             if (SelectedNote != null)
             {
                 NoteService noteService = new NoteService();
@@ -236,6 +241,15 @@ namespace NotiX7.ViewModels
             FilterNotesMenuVisiblity = Visibility.Visible;
             CreateButtonMenuVisiblity = Visibility.Collapsed;
         }
+
+        [RelayCommand]
+        private async void DeleteNote()
+        {
+            NoteService noteService = new NoteService();
+            await noteService.DeleteNotesFromTheDb(SelectedNote);
+            Items.Remove(SelectedNote);
+        }
+       
 
         #endregion
 
@@ -298,5 +312,7 @@ namespace NotiX7.ViewModels
 
             Items = notes;
         }
+
+       
     }
 }
