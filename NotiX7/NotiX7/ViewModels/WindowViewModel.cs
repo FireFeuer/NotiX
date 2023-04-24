@@ -157,7 +157,7 @@ namespace NotiX7.ViewModels
                     SecondDate = "",
                     Z = InformationTransportation.MaxZ + 1,
                     Size = (int)SelectedNoteSize,
-                    Is_delete = 1
+                    Is_delete = 0,
                 };
                 InformationTransportation.MaxZ = note.Z;
                 Items.Add(note);
