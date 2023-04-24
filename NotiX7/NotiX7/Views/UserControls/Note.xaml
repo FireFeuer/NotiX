@@ -20,12 +20,12 @@
         </Style>
     </UserControl.Resources>
     
-    <UserControl.ContextMenu>
+    <!--<UserControl.ContextMenu>
         <ContextMenu>
             <MenuItem Header="Удалить"
                       Command="{Binding DataContext.DeleteNoteCommand, RelativeSource={RelativeSource AncestorType=window:MainWindow}}"/>
         </ContextMenu>
-    </UserControl.ContextMenu>
+    </UserControl.ContextMenu>-->
 
 
 
