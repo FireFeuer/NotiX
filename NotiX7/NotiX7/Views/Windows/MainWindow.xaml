@@ -301,7 +301,7 @@
                            FontSize="17"
                            TextAlignment="Center"
                            Foreground="White"
-                           Text="Выбеерите категорию для фильтрации заметок"/>
+                           Text="Выберите категорию для фильтрации заметок"/>
 
                 <ScrollViewer Grid.Row="1"
                               Grid.Column="0"
@@ -310,8 +310,8 @@
                                       >
                     <StackPanel Orientation="Vertical">
                         <ListView Grid.Row="1"
-                    ItemsSource="{Binding AddedColors}"
-                                      SelectedItem="{Binding SelectedFilterColor}"
+                                  ItemsSource="{Binding AddedColors}"
+                                  SelectedItem="{Binding SelectedFilterColor}"
                                   Margin="0 0 0 30">
                             <ListView.ItemTemplate>
                                 <DataTemplate>

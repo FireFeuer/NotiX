@@ -52,7 +52,7 @@ namespace NotiX7.Services
                     FirstDate = note.FirstDate,
                     SecondDate = note.SecondDate,
                     Size = note.Size,
-                    Color = 7,
+                    Color = note.ColorNavigation.Id,
                     X = note.X,
                     Y = note.Y,
                     Is_open = note.Is_open,

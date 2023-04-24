@@ -248,10 +248,11 @@ namespace NotiX7.ViewModels
 
         private void GetAddedColors()
         {
+            ObservableCollection<Note> notes = _noteService.LoadNotesFromDb();
             List<int> colorsIds = new List<int>();
-            if (Items != null && Items.Count > 0 && Colors != null)
+            if (notes != null && notes.Count > 0 && Colors != null)
             {
-                foreach (var item in Items)
+                foreach (var item in notes)
                 {
                     if (item != null)
                     {
