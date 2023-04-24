@@ -252,6 +252,7 @@ namespace NotiX7.ViewModels
             NoteService noteService = new NoteService();
             await noteService.DeleteNotesFromTheDb(SelectedNote);
             Items.Remove(SelectedNote);
+            GetAddedColors();
         }
        
 
