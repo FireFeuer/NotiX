@@ -5,9 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:NotiX7.Views.UserControls"
+             xmlns:window ="clr-namespace:NotiX7"
              mc:Ignorable="d"
             MouseLeftButtonDown="border_PreviewMouseDown"
-             xmlns:converters="clr-namespace:NotiX7.Assets.Converters"
+             xmlns:converters="clr-namespace:NotiX7.Assets.Converters" xmlns:viewmodels="clr-namespace:NotiX7.ViewModels" xmlns:models="clr-namespace:NotiX7.Models" d:DataContext="{d:DesignInstance Type=viewmodels:WindowViewModel}"
              x:Name="NoteUserControl"
              PreviewMouseRightButtonDown="NoteUserControl_PreviewMouseRightButtonDown">
 
@@ -15,15 +16,18 @@
 
     <UserControl.Resources>
         <Style TargetType="{x:Type materialDesign:SmartHint}">
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center" />
         </Style>
     </UserControl.Resources>
-
-    <UserControl.ContextMenu>
+    
+    <!--<UserControl.ContextMenu>
         <ContextMenu>
-            <MenuItem Header="Удалить"/>
+            <MenuItem Header="Удалить"
+                      Command="{Binding DataContext.DeleteNoteCommand, RelativeSource={RelativeSource AncestorType=window:MainWindow}}"/>
         </ContextMenu>
-    </UserControl.ContextMenu>
+    </UserControl.ContextMenu>-->
+
+
 
     <Border x:Name="border" Width="{Binding Size, Converter={converters:NoteHeightToWidthConverter}}" 
             CornerRadius="6 6 6 6" 
@@ -59,7 +63,10 @@
                      TextAlignment="Center"
                      materialDesign:HintAssist.Hint="Заголовок"
                      Margin="0,3" Cursor="Arrow">
-
+                    <TextBox.ContextMenu>
+                        <ContextMenu Visibility="Collapsed">
+                        </ContextMenu>
+                    </TextBox.ContextMenu>
                 </TextBox>
 
                 <StackPanel Margin="10"
@@ -77,6 +84,10 @@
          materialDesign:TextFieldAssist.UnderlineBrush="Transparent"
                              materialDesign:HintAssist.Hint="Основной текст"
                              Margin="0 0 0 0">
+                        <TextBox.ContextMenu>
+                            <ContextMenu Visibility="Collapsed">
+                            </ContextMenu>
+                        </TextBox.ContextMenu>
                     </TextBox>
 
                     <StackPanel.Style>

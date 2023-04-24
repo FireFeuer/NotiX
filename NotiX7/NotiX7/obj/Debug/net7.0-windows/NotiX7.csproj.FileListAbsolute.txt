@@ -133,7 +133,6 @@ C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\ru
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.csproj.AssemblyReference.cache
-C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\ColorPanelUserControl.g.cs
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\Note.g.cs
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\Windows\MainWindow.g.cs
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\App.g.cs
@@ -142,7 +141,6 @@ C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Ge
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7_MarkupCompile.cache
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7_MarkupCompile.lref
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\App.baml
-C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\ColorPanelUserControl.baml
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\Note.baml
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\Windows\MainWindow.baml
 C:\Users\МОиБД\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.g.resources
@@ -213,7 +211,6 @@ C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\runtime
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\bin\Debug\net7.0-windows\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.csproj.AssemblyReference.cache
-C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\ColorPanelUserControl.g.cs
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\Note.g.cs
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\Windows\MainWindow.g.cs
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\App.g.cs
@@ -222,7 +219,6 @@ C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Generat
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7_MarkupCompile.cache
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7_MarkupCompile.lref
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\App.baml
-C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\ColorPanelUserControl.baml
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\UserControls\Note.baml
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Views\Windows\MainWindow.baml
 C:\Users\Admin\Source\Repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\NotiX7.g.resources
@@ -316,3 +312,5 @@ C:\Users\pavlo\Source\Repos\FireFeuer\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windo
 C:\Users\pavlo\Source\Repos\FireFeuer\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\ref\NotiX7.dll
 C:\Users\pavlo\source\repos\FireFeuer\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Assets\Styles\SizeButtonStyle.baml
 C:\Users\pavlo\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Assets\Styles\SizeButtonStyle.baml
+C:\Users\Admin\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Assets\Styles\SizeButtonStyle.baml
+C:\Users\МОиБД\source\repos\NotiX\NotiX7\NotiX7\obj\Debug\net7.0-windows\Assets\Styles\SizeButtonStyle.baml
