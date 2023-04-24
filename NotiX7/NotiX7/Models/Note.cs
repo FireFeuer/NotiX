@@ -13,8 +13,7 @@ namespace NotiX7.Models
         [ObservableProperty]
         private bool _isSelected = false;
 
-        [ObservableProperty]
-        private int _z;
+      
 
         [RelayCommand]
         private void Selecting()

@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Input;
+using NotiX7.Views.UserControls;
 
 namespace NotiX7.Services
 {
     public class NoteService
     {
-        public ObservableCollection<Note> LoadNotesFromDb()
+        public async Task<ObservableCollection<Note>> LoadNotesFromDb()
         {
             ObservableCollection<Note> notes = new ObservableCollection<Note>();
             using (NotixDbContext db = new NotixDbContext())
@@ -35,7 +36,8 @@ namespace NotiX7.Services
                         ColorNavigation = note.ColorNavigation,
                         Is_open = note.Is_open,
                         Size = note.Size,
-                        Is_delete = note.Is_delete
+                        Is_delete = note.Is_delete,
+                        Z = note.Z                      
                     };
                     if(note.Is_delete == 0)
                     {
@@ -43,7 +45,44 @@ namespace NotiX7.Services
                     }
                    
                 }
-            }           
+            }
+            await Task.Delay(0);
+            return notes;
+        }
+
+        public async Task<ObservableCollection<Note>> LoadDeletedNotesFromDb()
+        {
+            ObservableCollection<Note> notes = new ObservableCollection<Note>();
+            using (NotixDbContext db = new NotixDbContext())
+            {
+                db.ColorsCategories.ToList();
+                Microsoft.EntityFrameworkCore.DbSet<NoteDB> notesDB;
+                notesDB = db.Notes;
+                foreach (NoteDB note in notesDB)
+                {
+                    Note addedNote = new Note
+                    {
+                        Id = note.Id,
+                        X = note.X,
+                        Y = note.Y,
+                        Title = note.Title,
+                        Text = note.Text,
+                        FirstDate = note.FirstDate,
+                        SecondDate = note.SecondDate,
+                        ColorNavigation = note.ColorNavigation,
+                        Is_open = note.Is_open,
+                        Size = note.Size,
+                        Is_delete = note.Is_delete,
+                        Z = note.Z
+                    };
+                    if (note.Is_delete == 1)
+                    {
+                        notes.Add(addedNote);
+                    }
+
+                }
+            }
+            await Task.Delay(0);
             return notes;
         }
 
@@ -60,11 +99,12 @@ namespace NotiX7.Services
                     FirstDate = note.FirstDate,
                     SecondDate = note.SecondDate,
                     Size = note.Size,
-                    Color = 7,
+                    Color = note.ColorNavigation.Id,
                     X = note.X,
                     Y = note.Y,
                     Is_open = note.Is_open,
-                    Is_delete = 1
+                    Is_delete = 0,
+                    Z = note.Z
                 });
                 await db.SaveChangesAsync();
             }
@@ -88,7 +128,7 @@ namespace NotiX7.Services
                             noteDB.X = note.X;
                             noteDB.Y = note.Y;
                             noteDB.Is_open = note.Is_open;
-                         
+                            noteDB.Z = note.Z;
                         }
                     }
 
@@ -108,8 +148,7 @@ namespace NotiX7.Services
                     {
                         if (note.Id == noteDB.Id)
                         {
-                            noteDB.Is_delete = 0;
-                            MessageBox.Show("sd");
+                            noteDB.Is_delete = 1;
                         }
                     }
                    

@@ -72,11 +72,21 @@ namespace NotiX7.ViewModels
 
 
             Items = new ObservableCollection<Note>();
-            Items = _noteService.LoadNotesFromDb();
+            UpdateItems();
             items_count = Items.Count;
 
             Colors = _colorService.LoadNotAllColorsFromDb();
             GetAddedColors();
+
+            int max_z = 0;
+            foreach(var item in _items)
+            {
+                if(item.Z > max_z)
+                {
+                    max_z = item.Z;
+                }
+            }
+            InformationTransportation.MaxZ = max_z;
         }
 
 
@@ -294,9 +304,9 @@ namespace NotiX7.ViewModels
             }
         }
 
-        private void UpdateItems()
+        private async void UpdateItems()
         {
-            ObservableCollection<Note> notes = _noteService.LoadNotesFromDb();
+            ObservableCollection<Note> notes = await _noteService.LoadNotesFromDb();
             List<Note> filtredNotes = new List<Note>();
 
             if (SelectedFilterColor != null)
@@ -305,7 +315,7 @@ namespace NotiX7.ViewModels
             }
             else
             {
-                Items = _noteService.LoadNotesFromDb();
+                Items = await _noteService.LoadNotesFromDb();
                 return;
             }
 
