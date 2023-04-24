@@ -249,6 +249,7 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private async void DeleteNote()
         {
+          
             NoteService noteService = new NoteService();
             await noteService.DeleteNotesFromTheDb(SelectedNote);
             Items.Remove(SelectedNote);
