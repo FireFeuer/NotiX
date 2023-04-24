@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ERbmZR/P8fSdrm4S+oXALInYHkjOUqeQJ8+gUkB/isptBZIrooU1Q3dJSD3Ay8KoVyKb3fnn76kbknpANjPpzg==",
+  "dgSpecHash": "tnvfbVhQIb0bXmzEd8b/HQWCVZypaKx5YarnipxF683U9urc+JuJHyBEs+JJ8wpaBg1DSNv57DVC1/n/Dq/neA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\МОиБД\\source\\repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
+  "projectFilePath": "C:\\Users\\МОиБД\\Source\\Repos\\NotiX\\NotiX7\\NotiX7\\NotiX7.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\МОиБД\\.nuget\\packages\\communitytoolkit.mvvm\\8.1.0\\communitytoolkit.mvvm.8.1.0.nupkg.sha512",
     "C:\\Users\\МОиБД\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

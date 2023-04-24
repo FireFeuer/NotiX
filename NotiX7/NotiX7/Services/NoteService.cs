@@ -37,7 +37,7 @@ namespace NotiX7.Services
                         Size = note.Size,
                         Is_delete = note.Is_delete
                     };
-                    if(note.Is_delete == 1)
+                    if(note.Is_delete == 0)
                     {
                         notes.Add(addedNote);
                     }
