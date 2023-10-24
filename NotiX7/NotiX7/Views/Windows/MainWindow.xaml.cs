@@ -162,7 +162,7 @@ namespace NotiX7
 
         private void TakeNote(object sender, MouseButtonEventArgs e)
         {
-            MessageBox.Show("asd");
+            
         }
 
         //Взяли заметку
@@ -254,7 +254,7 @@ namespace NotiX7
 
         private void TextBox_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Debug.WriteLine("sadasd");
+          
 
         }
 

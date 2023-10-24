@@ -233,7 +233,7 @@ namespace NotiX7.ViewModels
         [RelayCommand]
         private async void KeyUp()
         {
-            MessageBox.Show("sad");
+      
             if (SelectedNote != null)
             {
                 NoteService noteService = new NoteService();
