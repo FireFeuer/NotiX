@@ -12,7 +12,7 @@
         WindowState="Maximized"
         DataContext="{Binding WindowViewModel,Source={StaticResource ServiceLocator}}"
 
-        Title="MainWindow" Height="450" Width="800"  Icon="\Resources\Icons\Note.png"
+        Title="NotiX" Height="450" Width="800"  Icon="\Resources\Icons\Note.png"
        Background="#FFE4DCD0">
 
     <Window.Resources>
