@@ -154,7 +154,7 @@
                     </Button.ContextMenu>
                 </Button>
 
-                <Button Content="Сортировка"
+                <Button Content="Фильтрация"
                         Command="{Binding FilterNotesCommand}"/>
              
             </StackPanel>
